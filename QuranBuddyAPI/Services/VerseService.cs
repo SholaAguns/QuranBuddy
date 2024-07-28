@@ -25,14 +25,15 @@ namespace QuranBuddyAPI.Services
             throw new NotImplementedException();
         }
 
-        public Task<ICollection<Verse>> GetVersesByChapter(int chapterId)
+        public async Task<ICollection<Verse>> GetVersesByChapterId(int chapterId)
         {
-            throw new NotImplementedException();
+            return await _context.Verses.Where(v => v.ChapterId == chapterId).ToListAsync();
+             
         }
 
         public async Task PopulateVersesAsync()
         {
-            Console.WriteLine("In verse service");
+            //Console.WriteLine("In verse service");
             var client = new RestClient(new RestClientOptions("https://api.quran.com"));
             var chapters = _context.Chapters.Distinct().ToList();
             foreach (var chapter in chapters)
@@ -56,16 +57,17 @@ namespace QuranBuddyAPI.Services
 
                         foreach (var verse in verses)
                         {
-                            //verse.Chapter = chapter;
-                            //verse.ChapterId = chapter.Id;
-                            //chapter.Verses.Add(verse);
-                            //_context.Verses.Add(verse);
-                            Console.WriteLine(verse.Id);
+                            verse.Chapter = chapter;
+                            verse.ChapterId = chapter.Id;
+                            //
+                            _context.Verses.Add(verse);
+                            chapter.Verses.Add(verse);
+                            //Console.WriteLine(verse.Id);
                         }
 
-                        Console.WriteLine("Done");
+                        //Console.WriteLine("Done");
 
-                        //await _context.SaveChangesAsync();
+                        await _context.SaveChangesAsync();
 
                     }
 

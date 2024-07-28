@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuranBuddyAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+031adb82842288a080241f762576f957b040e0ba")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc8a9204bae8a6026251c32dded81d2552c777a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuranBuddyAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuranBuddyAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

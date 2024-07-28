@@ -23,5 +23,26 @@ namespace QuranBuddyAPI.Controllers
 
             return Ok(chapters);
         }
+
+        [HttpGet("by-id/{id}", Name = "GetChapterById")]
+        public async Task<IActionResult> GetChapterById(int id)
+        {
+
+            
+                var chapter = await _chapterService.GetChapterByIdAsync(id);
+
+                return Ok(chapter);
+            
+        }
+
+        [HttpGet("by-name/{name}", Name = "GetChapterByName")]
+        public async Task<IActionResult> GetChapterByString(string name)
+        {
+
+            var chapters = await _chapterService.GetChapterByNameAsync(name);
+
+            return Ok(chapters);
+
+        }
     }
 }

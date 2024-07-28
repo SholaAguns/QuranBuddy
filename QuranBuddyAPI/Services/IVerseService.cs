@@ -10,7 +10,7 @@ namespace QuranBuddyAPI.Services
 
         public Task<Verse> GetVerseByKey(string key);
 
-        public Task<ICollection<Verse>> GetVersesByChapter(int chapterId);
+        public Task<ICollection<Verse>> GetVersesByChapterId(int chapterId);
 
         
     }

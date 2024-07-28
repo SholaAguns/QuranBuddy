@@ -3,6 +3,7 @@ using QuranBuddyAPI.Contexts;
 using Microsoft.EntityFrameworkCore;
 using RestSharp;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace QuranBuddyAPI.Services
 {
@@ -61,14 +62,18 @@ namespace QuranBuddyAPI.Services
             return await _context.Chapters.ToListAsync();
         }
 
-        public Task<Chapter> GetChapterByIdAsync(int id)
+        public async Task<Chapter> GetChapterByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Chapters.Where(c => c.Id == id).FirstOrDefaultAsync();
         }
 
-        public Task<Chapter> GetChapterByNameAsync(string name)
+        public async Task<ICollection<Chapter>> GetChapterByNameAsync(string name)
         {
-            throw new NotImplementedException();
+            var chapters =  await _context.Chapters.Where(c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
+
+            Console.WriteLine("Chapter: " + chapters);
+
+            return chapters;
         }
 
 
