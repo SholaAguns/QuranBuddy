@@ -15,17 +15,22 @@ namespace QuranBuddyAPI.Services
             _context = context;
         }
 
-        public Task<Verse> GetVerseById(int id)
+        public async Task<ICollection<Verse>> GetVersesByChapterNameAsync(string chapterName)
         {
-            throw new NotImplementedException();
+            return await _context.Verses.Where(v => v.Chapter.Name == chapterName).ToListAsync();
         }
 
-        public Task<Verse> GetVerseByKey(string key)
+        public async Task<Verse> GetVerseByIdAsync(int verseId)
         {
-            throw new NotImplementedException();
+            return await _context.Verses.Where(v => v.Id == verseId).SingleOrDefaultAsync();
         }
 
-        public async Task<ICollection<Verse>> GetVersesByChapterId(int chapterId)
+        public async Task<Verse> GetVerseByKeyAsync(string key)
+        {
+            return await _context.Verses.Where(v => v.VerseKey == key).SingleOrDefaultAsync();
+        }
+
+        public async Task<ICollection<Verse>> GetVersesByChapterIdAsync(int chapterId)
         {
             return await _context.Verses.Where(v => v.ChapterId == chapterId).ToListAsync();
              
@@ -33,49 +38,64 @@ namespace QuranBuddyAPI.Services
 
         public async Task PopulateVersesAsync()
         {
-            //Console.WriteLine("In verse service");
             var client = new RestClient(new RestClientOptions("https://api.quran.com"));
             var chapters = _context.Chapters.Distinct().ToList();
+
+
             foreach (var chapter in chapters)
             {
-                var request = new RestRequest("/api/v4/verses/by_chapter/" + chapter.Id, Method.Get);
-                request.AddQueryParameter("translations", 131);
-                request.AddQueryParameter("fields", "text_uthmani,image_url");
-                request.AddHeader("Accept", "application/json");
 
-                var response = await client.ExecuteAsync(request);
-                //Console.WriteLine("Request sent");
 
-                if (response.IsSuccessful)
+                int currentPage = 1;
+                int totalPages = 1;
+
+
+
+                do
                 {
+                    var request = new RestRequest("/api/v4/verses/by_chapter/" + chapter.Id, Method.Get);
+                    request.AddQueryParameter("translations", 131);
+                    request.AddQueryParameter("fields", "text_uthmani,image_url");
+                    request.AddQueryParameter("page", currentPage.ToString());
+                    request.AddHeader("Accept", "application/json");
 
-                    var apiResponse = JsonConvert.DeserializeObject<VerseApiResponse>(response.Content);
-                    var verses = apiResponse?.Verses;
+                    var response = await client.ExecuteAsync(request);
 
-                    if (verses != null)
+
+                    if (response.IsSuccessful)
                     {
 
-                        foreach (var verse in verses)
+                        var apiResponse = JsonConvert.DeserializeObject<VerseApiResponse>(response.Content);
+                        var verses = apiResponse?.Verses;
+                        var pagination = apiResponse?.Pagination;
+
+                        if (verses != null)
                         {
-                            verse.Chapter = chapter;
-                            verse.ChapterId = chapter.Id;
-                            //
-                            _context.Verses.Add(verse);
-                            chapter.Verses.Add(verse);
-                            //Console.WriteLine(verse.Id);
+
+                            foreach (var verse in verses)
+                            {
+                                verse.Chapter = chapter;
+                                verse.ChapterId = chapter.Id;
+                                _context.Verses.Add(verse);
+
+                            }
+                            
+
+                            totalPages = pagination.TotalPages;
+                            currentPage++;
+
+
+                            await _context.SaveChangesAsync();
+
                         }
 
-                        //Console.WriteLine("Done");
-
-                        await _context.SaveChangesAsync();
-
                     }
-
+                    else
+                    {
+                        throw new Exception("Failed to retrieve verses from the API");
+                    }
                 }
-                else
-                {
-                    throw new Exception("Failed to retrieve verses from the API");
-                }
+                while (currentPage <= totalPages);
             }
 
         }

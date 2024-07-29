@@ -54,6 +54,9 @@ namespace QuranBuddyAPI.Models
     {
         [JsonProperty("verses")]
         public List<Verse> Verses { get; set; }
+
+        [JsonProperty("pagination")]
+        public Pagination Pagination { get; set; }
     }
 
     public class Translation
@@ -66,5 +69,23 @@ namespace QuranBuddyAPI.Models
 
         [JsonProperty("text")]
         public string Text { get; set; }
+    }
+
+    public class Pagination
+    {
+        [JsonProperty("per_page")]
+        public int PerPage { get; set; }
+
+        [JsonProperty("current_page")]
+        public int CurrentPage { get; set; }
+
+        [JsonProperty("next_page")]
+        public int? NextPage { get; set; }
+
+        [JsonProperty("total_pages")]
+        public int TotalPages { get; set; }
+
+        [JsonProperty("total_records")]
+        public int TotalRecords { get; set; }
     }
 }

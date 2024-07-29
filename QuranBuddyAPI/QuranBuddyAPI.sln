@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuranBuddyAPI", "QuranBuddyAPI.csproj", "{9FDDAB9F-3645-424F-B503-7BA696BA3F14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuranBuddyAPI", "QuranBuddyAPI.csproj", "{9FDDAB9F-3645-424F-B503-7BA696BA3F14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8CD551AF-EB65-4382-9D5E-9E62510C036B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuranBuddyAPI_Tests", "..\Tests\QuranBuddyAPI_Tests\QuranBuddyAPI_Tests.csproj", "{7049DCBF-A7D5-46D3-984A-3A7D69001814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{9FDDAB9F-3645-424F-B503-7BA696BA3F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FDDAB9F-3645-424F-B503-7BA696BA3F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FDDAB9F-3645-424F-B503-7BA696BA3F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7049DCBF-A7D5-46D3-984A-3A7D69001814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7049DCBF-A7D5-46D3-984A-3A7D69001814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7049DCBF-A7D5-46D3-984A-3A7D69001814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7049DCBF-A7D5-46D3-984A-3A7D69001814}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7049DCBF-A7D5-46D3-984A-3A7D69001814} = {8CD551AF-EB65-4382-9D5E-9E62510C036B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CE9D4F7-7A3E-4EDE-AFCC-5FC9CABCF9FC}

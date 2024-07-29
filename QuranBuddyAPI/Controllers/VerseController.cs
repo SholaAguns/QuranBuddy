@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QuranBuddyAPI.Services;
+using System.Xml.Linq;
 
 namespace QuranBuddyAPI.Controllers
 {
@@ -20,7 +21,29 @@ namespace QuranBuddyAPI.Controllers
         {
 
 
-            var verses = _verseService.GetVersesByChapterId(id);
+            var verses = _verseService.GetVersesByChapterIdAsync(id);
+
+            return Ok(verses);
+
+        }
+
+        [HttpGet("by-id/{id}", Name = "GetVerseById")]
+        public async Task<IActionResult> GetVerseById(int id)
+        {
+
+
+            var verse = _verseService.GetVerseByIdAsync(id);
+
+            return Ok(verse);
+
+        }
+
+        [HttpGet("by-chapter-name/{name}", Name = "GetVersesByChapterName")]
+        public async Task<IActionResult> GetVersesByChapterName(string name)
+        {
+
+
+            var verses = _verseService.GetVersesByChapterNameAsync(name);
 
             return Ok(verses);
 

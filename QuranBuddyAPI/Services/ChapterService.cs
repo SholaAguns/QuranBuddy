@@ -64,14 +64,15 @@ namespace QuranBuddyAPI.Services
 
         public async Task<Chapter> GetChapterByIdAsync(int id)
         {
-            return await _context.Chapters.Where(c => c.Id == id).FirstOrDefaultAsync();
+            var chapter = await _context.Chapters.Where(c => c.Id == id).FirstOrDefaultAsync();
+
+
+            return chapter;
         }
 
         public async Task<ICollection<Chapter>> GetChapterByNameAsync(string name)
         {
             var chapters =  await _context.Chapters.Where(c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
-
-            Console.WriteLine("Chapter: " + chapters);
 
             return chapters;
         }

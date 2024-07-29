@@ -6,6 +6,8 @@ namespace QuranBuddyAPI.Models
 {
     public class Chapter
     {
+
+
         [JsonProperty("id")]
         public int Id { get; set; }
 
@@ -27,8 +29,7 @@ namespace QuranBuddyAPI.Models
         [JsonProperty("revelation_place")] 
         public string RevelationPlace { get; set; }
 
-        public ICollection<Verse> Verses { get; set; }
-
+        public ICollection<Verse> Verses { get; set; } = new List<Verse>();
     }
 
     public class ChapterApiResponse
