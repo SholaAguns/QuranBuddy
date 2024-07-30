@@ -9,7 +9,7 @@ namespace QuranBuddyAPI.Services
 
         public Task<Chapter> GetChapterByIdAsync(int id);
 
-        public Task<ICollection<Chapter>> GetChapterByNameAsync(string name);
+        public Task<ICollection<Chapter>> GetChaptersByNameAsync(string name);
 
         public Task<ICollection<Chapter>> GetAllChaptersAsync();
     }

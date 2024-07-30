@@ -70,7 +70,7 @@ namespace QuranBuddyAPI.Services
             return chapter;
         }
 
-        public async Task<ICollection<Chapter>> GetChapterByNameAsync(string name)
+        public async Task<ICollection<Chapter>> GetChaptersByNameAsync(string name)
         {
             var chapters =  await _context.Chapters.Where(c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
 

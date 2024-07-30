@@ -39,7 +39,7 @@ namespace QuranBuddyAPI.Controllers
         public async Task<IActionResult> GetChapterByString(string name)
         {
 
-            var chapters = await _chapterService.GetChapterByNameAsync(name);
+            var chapters = await _chapterService.GetChaptersByNameAsync(name);
 
             return Ok(chapters);
 
