@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using QuranBuddyAPI.Models;
 using QuranBuddyAPI.Services;
 using System.Xml.Linq;
 
@@ -8,10 +9,10 @@ namespace QuranBuddyAPI.Controllers
     [ApiController]
     public class VerseController : Controller
     {
-        private readonly VerseService _verseService;
+        private readonly IVerseService _verseService;
 
 
-        public VerseController(VerseService verseService )
+        public VerseController(IVerseService verseService )
         {
             _verseService = verseService;
         }
@@ -20,8 +21,19 @@ namespace QuranBuddyAPI.Controllers
         public async Task<IActionResult> GetVersesChapterById(int id)
         {
 
+            var chapterViewModel = new ChapterIdViewModel { Id = id };
+
+            if (!TryValidateModel(chapterViewModel))
+            {
+                return BadRequest(ModelState);
+            }
 
             var verses = _verseService.GetVersesByChapterIdAsync(id);
+
+            if (verses == null)
+            {
+                return NoContent();
+            }
 
             return Ok(verses);
 
@@ -34,6 +46,11 @@ namespace QuranBuddyAPI.Controllers
 
             var verse = _verseService.GetVerseByIdAsync(id);
 
+            if (verse == null)
+            {
+                return NoContent();
+            }
+
             return Ok(verse);
 
         }
@@ -41,9 +58,20 @@ namespace QuranBuddyAPI.Controllers
         [HttpGet("by-chapter-name/{name}", Name = "GetVersesByChapterName")]
         public async Task<IActionResult> GetVersesByChapterName(string name)
         {
+            var chapterViewModel = new ChapterNameViewModel { Name = name };
 
+            if (!TryValidateModel(chapterViewModel))
+            {
+                return BadRequest(ModelState);
+            }
 
             var verses = _verseService.GetVersesByChapterNameAsync(name);
+
+            if (verses == null)
+            {
+                return NoContent();
+            }
+
 
             return Ok(verses);
 

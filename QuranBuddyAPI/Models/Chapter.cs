@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using QuranBuddyAPI.Models;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+
 
 namespace QuranBuddyAPI.Models
 {
@@ -9,6 +12,7 @@ namespace QuranBuddyAPI.Models
 
 
         [JsonProperty("id")]
+
         public int Id { get; set; }
 
         [JsonProperty("name_complex")]
@@ -44,6 +48,21 @@ namespace QuranBuddyAPI.Models
         public string LanguageName { get; set; }
 
         [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class ChapterIdViewModel
+    {
+        [Range(1, 114, ErrorMessage = "Chapter Id must be between 1 and 114")]
+        [Required]
+        public int Id { get; set; }
+
+    }
+
+    public class ChapterNameViewModel
+    {
+        [Length(1, 50, ErrorMessage = "Max name length is 50")]
+        [Required]
         public string Name { get; set; }
     }
 }

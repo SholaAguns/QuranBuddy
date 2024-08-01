@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Y82k84h6SGPblKcqVNYBVudN7H1X6YUurlmMFZrUUw86ueLFiXjgqpULBEjztZ+RO1c7BcKDcuW1gpAa3qEX8w==",
+  "dgSpecHash": "Kd/KMNs21KyFynj8rjBp1BdC4zDTPZHbAWJE7EeQFuJQrRECXE4uGYMVTSPk9SFmtj7Bi4QSO6+6FTjKry6U7w==",
   "success": true,
   "projectFilePath": "C:\\Work\\Training\\API\\QuranBuddy\\Tests\\QuranBuddyAPI_Tests\\QuranBuddyAPI_Tests.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\fluentassertions\\6.12.0\\fluentassertions.6.12.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",
@@ -34,6 +35,7 @@
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.testplatform.testhost\\17.8.0\\microsoft.testplatform.testhost.17.8.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\moq\\4.20.70\\moq.4.20.70.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\nuget.frameworks\\6.5.0\\nuget.frameworks.6.5.0.nupkg.sha512",
@@ -70,6 +72,7 @@
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.3.0\\system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
+    "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",

@@ -16,9 +16,9 @@ builder.Services.AddDbContext<QuranDBContext>(
     dbContextOptions => dbContextOptions.UseSqlite(
         builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
-builder.Services.AddScoped<ChapterService>();
+builder.Services.AddScoped<IChapterService, ChapterService>();
 
-builder.Services.AddScoped<VerseService>();
+builder.Services.AddScoped<IVerseService, VerseService>();
 
 var app = builder.Build();
 
