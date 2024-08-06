@@ -49,7 +49,7 @@ namespace QuranBuddyAPI_Tests.ServiceTests.VerseService_Tests
                     Id = 15,
                     VerseKey = "2:3",
                     ChapterId = 2,
-                    Chapter = testChapter,
+   
                     VerseNumber = 3,
                     HizbNumber = 0,
                     RubElHizbNumber = 0,
@@ -68,7 +68,6 @@ namespace QuranBuddyAPI_Tests.ServiceTests.VerseService_Tests
                     Id = 16,
                     VerseKey = "2:4",
                     ChapterId = 2,
-                    Chapter = testChapter,
                     VerseNumber = 4,
                     HizbNumber = 0,
                     RubElHizbNumber = 0,
@@ -86,7 +85,7 @@ namespace QuranBuddyAPI_Tests.ServiceTests.VerseService_Tests
                     Id = 17,
                     VerseKey = "2:5",
                     ChapterId = 2,
-                    Chapter = testChapter,
+
                     VerseNumber = 5,
                     HizbNumber = 0,
                     RubElHizbNumber = 0,

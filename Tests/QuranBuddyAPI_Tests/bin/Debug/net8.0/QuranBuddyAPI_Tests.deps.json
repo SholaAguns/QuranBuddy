@@ -97,6 +97,18 @@
           }
         }
       },
+      "Microsoft.EntityFrameworkCore.Proxies/8.0.7": {
+        "dependencies": {
+          "Castle.Core": "5.1.1",
+          "Microsoft.EntityFrameworkCore": "8.0.7"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.EntityFrameworkCore.Proxies.dll": {
+            "assemblyVersion": "8.0.7.0",
+            "fileVersion": "8.0.724.31404"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/8.0.7": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.7",
@@ -1427,6 +1439,7 @@
       "QuranBuddyAPI/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.7",
+          "Microsoft.EntityFrameworkCore.Proxies": "8.0.7",
           "Microsoft.EntityFrameworkCore.Sqlite": "8.0.7",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.19.6",
           "Newtonsoft.Json": "13.0.3",
@@ -1507,6 +1520,13 @@
       "sha512": "sha512-LMboWsjFFD+i24pvKwxEz24D0NUPlE7+M6gHYcSLioShxKhsPs/OXcB2E6kWTXHK/HIOM88e0rVNyZylCI81FA==",
       "path": "microsoft.entityframeworkcore.inmemory/8.0.7",
       "hashPath": "microsoft.entityframeworkcore.inmemory.8.0.7.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Proxies/8.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QXaz3KxardLcEc++7nNy35LGTuLxf/bIMV4+gLV+mbvfXMdC2p5yLuW+S0qcX6hNWqtDo7OHEbZ1Jcf2ezh9ZA==",
+      "path": "microsoft.entityframeworkcore.proxies/8.0.7",
+      "hashPath": "microsoft.entityframeworkcore.proxies.8.0.7.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/8.0.7": {
       "type": "package",

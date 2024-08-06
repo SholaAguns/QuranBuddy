@@ -148,3 +148,4 @@ C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\Quran
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\QuranBuddyAPI.pdb
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\Castle.Core.dll
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\Moq.dll
+C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll

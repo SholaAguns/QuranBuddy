@@ -12,8 +12,10 @@ namespace QuranBuddyAPI.Models
 
 
         [JsonProperty("id")]
-
+        [Key]
         public int Id { get; set; }
+
+        public virtual ICollection<Verse> Verses { get; set; }
 
         [JsonProperty("name_complex")]
         public string Name { get; set; }
@@ -33,7 +35,12 @@ namespace QuranBuddyAPI.Models
         [JsonProperty("revelation_place")] 
         public string RevelationPlace { get; set; }
 
-        public ICollection<Verse> Verses { get; set; } = new List<Verse>();
+
+        public Chapter()
+        {
+            Verses = new HashSet<Verse>();
+        }
+
     }
 
     public class ChapterApiResponse

@@ -10,6 +10,10 @@ namespace QuranBuddyAPI.Contexts
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Verse> Verses { get; set; }
 
+        public DbSet<Flashcard> Flashcards { get; set; }
+        public DbSet<FlashcardSet> FlashcardSets { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Chapter>()
@@ -29,7 +33,28 @@ namespace QuranBuddyAPI.Contexts
                 .HasMany(c => c.Verses)
                 .WithOne(v => v.Chapter)
                 .HasForeignKey(v => v.ChapterId)
-                .OnDelete(DeleteBehavior.Cascade); ;
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<Verse>()
+            //.HasOne(c => c.Chapter)  
+            //.WithMany(c => c.Verses)  
+            //.HasForeignKey(v => v.ChapterId)
+            //.IsRequired()
+            //.OnDelete(DeleteBehavior.Cascade);
+            
+
+
+            modelBuilder.Entity<Flashcard>()
+                .HasKey(f => f.Id);
+
+            modelBuilder.Entity<FlashcardSet>()
+                .HasKey(f => f.Id);
+
+            modelBuilder.Entity<FlashcardSet>()
+                .HasMany(f => f.Flashcards)
+                .WithOne(f => f.FlashcardSet)
+                .HasForeignKey(f => f.FlashcardId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -11,8 +11,8 @@ using QuranBuddyAPI.Contexts;
 namespace QuranBuddyAPI.Migrations
 {
     [DbContext(typeof(QuranDBContext))]
-    [Migration("20240728132146_TranslationsUpdate")]
-    partial class TranslationsUpdate
+    [Migration("20240806090216_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,6 +47,54 @@ namespace QuranBuddyAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Chapters");
+                });
+
+            modelBuilder.Entity("QuranBuddyAPI.Models.Flashcard", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Answer")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Flashcard");
+                });
+
+            modelBuilder.Entity("QuranBuddyAPI.Models.FlashcardSet", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("FlashcardAmount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Report")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserAnswers")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FlashcardSets");
                 });
 
             modelBuilder.Entity("QuranBuddyAPI.Models.Verse", b =>
@@ -128,6 +176,17 @@ namespace QuranBuddyAPI.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("QuranBuddyAPI.Models.Flashcard", b =>
+                {
+                    b.HasOne("QuranBuddyAPI.Models.FlashcardSet", "FlashcardSet")
+                        .WithMany("Flashcards")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlashcardSet");
+                });
+
             modelBuilder.Entity("QuranBuddyAPI.Models.Verse", b =>
                 {
                     b.HasOne("QuranBuddyAPI.Models.Chapter", "Chapter")
@@ -168,6 +227,11 @@ namespace QuranBuddyAPI.Migrations
             modelBuilder.Entity("QuranBuddyAPI.Models.Chapter", b =>
                 {
                     b.Navigation("Verses");
+                });
+
+            modelBuilder.Entity("QuranBuddyAPI.Models.FlashcardSet", b =>
+                {
+                    b.Navigation("Flashcards");
                 });
 #pragma warning restore 612, 618
         }

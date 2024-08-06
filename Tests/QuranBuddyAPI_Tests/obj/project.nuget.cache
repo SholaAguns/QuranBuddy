@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Kd/KMNs21KyFynj8rjBp1BdC4zDTPZHbAWJE7EeQFuJQrRECXE4uGYMVTSPk9SFmtj7Bi4QSO6+6FTjKry6U7w==",
+  "dgSpecHash": "ZIel7ye1J3UE4NV1G+VS0MqHN+XVFTSnZmUga7rQN+cQ0BXPWuIcArwUO0Y+mGjXYSx7AGzLrvObgUvfbRcU/A==",
   "success": true,
   "projectFilePath": "C:\\Work\\Training\\API\\QuranBuddy\\Tests\\QuranBuddyAPI_Tests\\QuranBuddyAPI_Tests.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.7\\microsoft.entityframeworkcore.abstractions.8.0.7.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.7\\microsoft.entityframeworkcore.analyzers.8.0.7.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\8.0.7\\microsoft.entityframeworkcore.inmemory.8.0.7.nupkg.sha512",
+    "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.entityframeworkcore.proxies\\8.0.7\\microsoft.entityframeworkcore.proxies.8.0.7.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.7\\microsoft.entityframeworkcore.relational.8.0.7.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\8.0.7\\microsoft.entityframeworkcore.sqlite.8.0.7.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\8.0.7\\microsoft.entityframeworkcore.sqlite.core.8.0.7.nupkg.sha512",

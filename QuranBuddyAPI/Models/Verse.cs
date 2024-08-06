@@ -1,15 +1,17 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuranBuddyAPI.Models
 {
     public class Verse
     {
-        public int ChapterId { get; set; }
-        public Chapter Chapter { get; set; }
-
         [JsonProperty("id")]
         public int Id { get; set; }
+
+        public int ChapterId { get; set; }
+
+        public virtual Chapter Chapter { get; set; }
 
         [JsonProperty("verse_number")]
         public int VerseNumber { get; set; }
@@ -45,7 +47,12 @@ namespace QuranBuddyAPI.Models
         public int JuzNumber { get; set; }
 
         [JsonProperty("translations")]
-        public List<Translation> Translations { get; set; }
+        public ICollection<Translation> Translations { get; set; }
+
+        public Verse()
+        {
+            Translations = new HashSet<Translation>();
+        }
 
 
     }

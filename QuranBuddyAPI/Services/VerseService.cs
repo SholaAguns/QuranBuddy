@@ -17,7 +17,9 @@ namespace QuranBuddyAPI.Services
 
         public async Task<ICollection<Verse>> GetVersesByChapterNameAsync(string chapterName)
         {
-            return await _context.Verses.Where(v => v.Chapter.Name == chapterName).ToListAsync();
+            var chapter = await _context.Chapters.Where(c => c.Name == chapterName).SingleOrDefaultAsync();
+
+            return await _context.Verses.Where(v => v.ChapterId == chapter.Id).ToListAsync();
         }
 
         public async Task<Verse> GetVerseByIdAsync(int verseId)
@@ -40,6 +42,7 @@ namespace QuranBuddyAPI.Services
         {
             var client = new RestClient(new RestClientOptions("https://api.quran.com"));
             var chapters = _context.Chapters.Distinct().ToList();
+            //var chapters = allChapters.GetRange(0, 1);
 
 
             foreach (var chapter in chapters)
@@ -68,14 +71,20 @@ namespace QuranBuddyAPI.Services
                         var apiResponse = JsonConvert.DeserializeObject<VerseApiResponse>(response.Content);
                         var verses = apiResponse?.Verses;
                         var pagination = apiResponse?.Pagination;
+                        //var trackedChapter = await _context.Chapters.FindAsync(chapter.Id);
+                        //var trackedChapter = await _context.Chapters.Where(c => c.Id == chapter.Id).FirstOrDefaultAsync();
+
+                        //Console.WriteLine("Chapter name is:" + trackedChapter.Name);
 
                         if (verses != null)
                         {
+                           
 
                             foreach (var verse in verses)
                             {
-                                verse.Chapter = chapter;
                                 verse.ChapterId = chapter.Id;
+                                verse.Chapter = chapter;
+                                //Console.WriteLine("Verse is in chapter: " + verse.Chapter.Name); 
                                 _context.Verses.Add(verse);
 
                             }
@@ -87,6 +96,10 @@ namespace QuranBuddyAPI.Services
 
                             await _context.SaveChangesAsync();
 
+                        }
+                        else
+                        {
+                            throw new Exception("Verses and chapter must exist");
                         }
 
                     }

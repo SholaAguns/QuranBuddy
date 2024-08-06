@@ -129,3 +129,5 @@ C:\Work\Training\API\QuranBuddy\QuranBuddyAPI\obj\Debug\net8.0\QuranBuddyAPI.pdb
 C:\Work\Training\API\QuranBuddy\QuranBuddyAPI\obj\Debug\net8.0\QuranBuddyAPI.genruntimeconfig.cache
 C:\Work\Training\API\QuranBuddy\QuranBuddyAPI\obj\Debug\net8.0\ref\QuranBuddyAPI.dll
 C:\Work\Training\API\QuranBuddy\QuranBuddyAPI\obj\Debug\net8.0\QuranBuddyAPI.sourcelink.json
+C:\Work\Training\API\QuranBuddy\QuranBuddyAPI\bin\Debug\net8.0\Castle.Core.dll
+C:\Work\Training\API\QuranBuddy\QuranBuddyAPI\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll
