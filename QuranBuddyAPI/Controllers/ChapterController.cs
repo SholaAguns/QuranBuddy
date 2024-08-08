@@ -41,7 +41,7 @@ namespace QuranBuddyAPI.Controllers
 
             if (chapter == null)
             {
-                return NoContent();
+                return NotFound();
             }
 
             return Ok(chapter);

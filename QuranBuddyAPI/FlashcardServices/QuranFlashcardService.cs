@@ -2,21 +2,55 @@
 using QuranBuddyAPI.Contexts;
 using QuranBuddyAPI.Models;
 using QuranBuddyAPI.Services;
+using System;
 
 namespace QuranBuddyAPI.FlashcardServices
 {
     public class QuranFlashcardService : IFlashcardService
     {
         private readonly QuranDBContext _context;
+        private string _type = "Quran";
 
 
         public QuranFlashcardService(QuranDBContext context)
         {
             _context = context;
         }
-        public Task<FlashcardSet> GetFlashcardSet(int amount)
+
+        private FlashcardSet PopulateFlashcardSet(List<Verse> Verses, FlashcardSet flashcardSet)
         {
-            throw new NotImplementedException();
+            Random random = new Random();
+            HashSet<int> uniqueNumbers = new HashSet<int>();
+
+            while (uniqueNumbers.Count < flashcardSet.FlashcardAmount)
+            {
+                int number = random.Next(0, Verses.Count);
+                uniqueNumbers.Add(number);
+            }
+
+
+            foreach (int number in uniqueNumbers)
+            {
+                Verse verse = Verses[number];
+                var chapter = _context.Chapters.Where(c => c.Id == verse.ChapterId).SingleOrDefault();
+
+                var flashcard = new Flashcard()
+                {
+                    Id = Guid.NewGuid(),
+                    FlashcardId = flashcardSet.Id,
+                    FlashcardSet = flashcardSet,
+                    Question = verse.TextUthmani,
+                    Answer = chapter.Name,
+                    ImageUrl = verse.ImageUrl,
+
+
+                };
+
+                _context.Flashcards.Add(flashcard);
+                
+            }
+
+            return flashcardSet;
         }
 
         public async Task<FlashcardSet> GetFlashcardSetAsync(int amount)
@@ -24,7 +58,8 @@ namespace QuranBuddyAPI.FlashcardServices
             
             FlashcardSet flashcardSet = new FlashcardSet();
             flashcardSet.Id = Guid.NewGuid();
-            flashcardSet.Type = "Quran";
+            flashcardSet.Type = _type;
+            flashcardSet.Name = _type + "_flashcards" + string.Format("{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
             flashcardSet.FlashcardAmount = amount;
 
             int maxVerseId = _context.Verses.Max(v => v.Id);
@@ -73,14 +108,42 @@ namespace QuranBuddyAPI.FlashcardServices
 
         }
 
+        public async Task<FlashcardSet> GetFlashcardSetByIdsAsync(int amount, List<int> idList)
+        {
+            FlashcardSet flashcardSet = new FlashcardSet();
+            flashcardSet.Id = Guid.NewGuid();
+            flashcardSet.Type = _type;
+            flashcardSet.Name = _type + "_flashcards" + string.Format("{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
+            flashcardSet.FlashcardAmount = amount;
+
+            List<Verse> Verses = new List<Verse>();
+
+            foreach(var id in idList)
+            {
+                var chapterVerses = _context.Verses.Where(v => v.ChapterId == id).ToList();
+
+                Verses.AddRange(chapterVerses);
+
+            }
+
+            flashcardSet = PopulateFlashcardSet(Verses, flashcardSet);
+
+            _context.FlashcardSets.Add(flashcardSet);
+            await _context.SaveChangesAsync();
+
+            return flashcardSet;
+        }
+
         public async Task<FlashcardSet> GetFlashcardSetByRangeAsync(int amount, int rangeStart, int rangeEnd)
         {
             FlashcardSet flashcardSet = new FlashcardSet();
             flashcardSet.Id = Guid.NewGuid();
+            flashcardSet.Type = _type;
+            flashcardSet.Name = _type + "_flashcards" + string.Format("{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
+            flashcardSet.FlashcardAmount = amount;
 
             List<Verse> Verses = new List<Verse>();
-            Random random = new Random();
-            HashSet<int> uniqueNumbers = new HashSet<int>();
+            
 
             for (int chapterId = rangeStart; chapterId <= rangeEnd; chapterId++)
             {
@@ -90,32 +153,36 @@ namespace QuranBuddyAPI.FlashcardServices
 
             }
 
-            while (uniqueNumbers.Count < amount)
+            flashcardSet = PopulateFlashcardSet(Verses, flashcardSet);
+
+            _context.FlashcardSets.Add(flashcardSet);
+            await _context.SaveChangesAsync();
+
+            return flashcardSet;
+
+
+        }
+
+        public async Task<FlashcardSet> GetFlashcardSetByNamesAsync(int amount, List<string> nameList)
+        {
+            FlashcardSet flashcardSet = new FlashcardSet();
+            flashcardSet.Id = Guid.NewGuid();
+            flashcardSet.Type = _type;
+            flashcardSet.Name = _type + "_flashcards" + string.Format("{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
+            flashcardSet.FlashcardAmount = amount;
+
+            List<Verse> Verses = new List<Verse>();
+
+
+            foreach (var name in nameList)
             {
-                int number = random.Next(0, Verses.Count);
-                uniqueNumbers.Add(number);
+                var chapterVerses = _context.Verses.Where(v => v.Chapter.Name == name).ToList();
+
+                Verses.AddRange(chapterVerses);
+
             }
 
-
-            foreach (int number in uniqueNumbers)
-            {
-                Verse verse = Verses[number];
-                var chapter = _context.Chapters.Where(c => c.Id == verse.ChapterId).SingleOrDefault();
-
-                var flashcard = new Flashcard()
-                {
-                    Id = Guid.NewGuid(),
-                    FlashcardSet = flashcardSet,
-                    Question = verse.TextUthmani,
-                    Answer = chapter.Name,
-                    ImageUrl = verse.ImageUrl,
-
-
-                };
-
-
-                flashcardSet.Flashcards.Add(flashcard);
-            }
+            flashcardSet = PopulateFlashcardSet(Verses, flashcardSet);
 
             _context.FlashcardSets.Add(flashcardSet);
             await _context.SaveChangesAsync();

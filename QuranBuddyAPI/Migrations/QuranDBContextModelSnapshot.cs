@@ -87,6 +87,9 @@ namespace QuranBuddyAPI.Migrations
                     b.Property<int>("FlashcardAmount")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Report")
                         .IsRequired()
                         .HasColumnType("TEXT");

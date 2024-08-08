@@ -10,7 +10,6 @@ namespace QuranBuddyAPI.Models
     public class Chapter
     {
 
-
         [JsonProperty("id")]
         [Key]
         public int Id { get; set; }
@@ -42,6 +41,28 @@ namespace QuranBuddyAPI.Models
         }
 
     }
+
+    public class ChapterDto
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string NameArabic { get; set; }
+
+        public string TranslatedName { get; set; }
+
+        public string TranslatedLanguage { get; set; }
+
+        public bool BismillahPre { get; set; }
+
+        public int VersesCount { get; set; }
+
+        public string RevelationPlace { get; set; }
+
+
+    }
+
 
     public class ChapterApiResponse
     {

@@ -57,4 +57,60 @@ namespace QuranBuddyAPI.Models
         }
     }
 
+
+
+    public class AllowedIdsEndAttribute : ValidationAttribute
+    {
+        private readonly int _min;
+        private readonly int _max;
+
+        public AllowedIdsEndAttribute(int min, int max)
+        {
+            _min = min;
+            _max = max;
+        }
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value is IEnumerable<int> list)
+            {
+                foreach (var item in list)
+                {
+                    if (item < _min || item > _max)
+                    {
+                        return new ValidationResult($"Each element in the list must be between {_min} and {_max}.");
+                    }
+                }
+            }
+            return ValidationResult.Success;
+        }
+    }
+
+    public class AllowedNamesLengthEndAttribute : ValidationAttribute
+    {
+        private readonly int _maxLength;
+
+        public AllowedNamesLengthEndAttribute(int max)
+        {
+
+            _maxLength = max;
+        }
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value is IEnumerable<string> list)
+            {
+                foreach (var item in list)
+                {
+                    if (item.Length > _maxLength)
+                    {
+                        return new ValidationResult($"Element length limit is " + _maxLength);
+                    }
+                }
+            }
+            return ValidationResult.Success;
+        }
+    }
+
+
 }

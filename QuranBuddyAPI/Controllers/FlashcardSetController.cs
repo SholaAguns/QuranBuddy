@@ -48,7 +48,7 @@ namespace QuranBuddyAPI.Controllers
             return Ok(flashcardSet);
         }
 
-        [HttpPut("{name}")]
+        [HttpPut("update-name")]
         public async Task<IActionResult> UpdateFlashcardSetName(FlashcardSetUpdateNameRequest flashcardRequest)
         {
             var flashcardSet = await _flashbackSetService.GetFlashcardSetByIdAsync(flashcardRequest.Id);
@@ -60,14 +60,21 @@ namespace QuranBuddyAPI.Controllers
             return Ok(flashcardSet);
         }
 
+        [HttpPost("set-answers")]
+        public async Task<IActionResult> SetFlashcardSetAnwsers(FlashcardSetAnswersRequest flashcardRequest)
+        {
+            var flashcardSet = await _flashbackSetService.GetFlashcardSetByIdAsync(flashcardRequest.Id);
+
+            if (flashcardSet == null) return NotFound();
+
+            await _flashbackSetService.SetFlashcardSetAnwsersAsync(flashcardRequest);
+
+            return Ok(flashcardSet);
+        }
 
 
 
 
-
-        public Task UpdateFlashcardSetNameAsync(FlashcardSetUpdateNameRequest flashcardRequest);
-
-        public Task SetFlashcardSetAnwsersAsync(FlashcardSetAnswersRequest flashcardRequest);
 
     }
 }

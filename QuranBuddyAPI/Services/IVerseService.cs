@@ -6,13 +6,13 @@ namespace QuranBuddyAPI.Services
     {
         public Task PopulateVersesAsync();
 
-        public Task<Verse> GetVerseByIdAsync(int verseId);
+        public Task<VerseDto> GetVerseByIdAsync(int verseId);
 
-        public Task<Verse> GetVerseByKeyAsync(string key);
+        public Task<VerseDto> GetVerseByKeyAsync(string key);
 
-        public Task<ICollection<Verse>> GetVersesByChapterNameAsync(string chapterName);
+        public Task<ICollection<VerseDto>> GetVersesByChapterNameAsync(string chapterName);
 
-        public Task<ICollection<Verse>> GetVersesByChapterIdAsync(int chapterId);
+        public Task<ICollection<VerseDto>> GetVersesByChapterIdAsync(int chapterId);
 
 
     }

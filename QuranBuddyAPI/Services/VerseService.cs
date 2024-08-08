@@ -15,27 +15,89 @@ namespace QuranBuddyAPI.Services
             _context = context;
         }
 
-        public async Task<ICollection<Verse>> GetVersesByChapterNameAsync(string chapterName)
+        public async Task<ICollection<VerseDto>> GetVersesByChapterNameAsync(string chapterName)
         {
-            var chapter = await _context.Chapters.Where(c => c.Name == chapterName).SingleOrDefaultAsync();
+            //var chapter = await _context.Chapters.Where(c => c.Name == chapterName).SingleOrDefaultAsync();
 
-            return await _context.Verses.Where(v => v.ChapterId == chapter.Id).ToListAsync();
+            //return await _context.Verses.Where(v => v.ChapterId == chapter.Id).ToListAsync();
+
+            var verses = await _context.Verses.Where(v => v.Chapter.Name == chapterName).ToListAsync();
+
+
+            var verseDtos = verses.Select(v => new VerseDto
+            {
+                Id = v.Id,
+                ChapterId = v.ChapterId,
+                ChapterName = v.Chapter.Name,
+                TextUthmani = v.TextUthmani,
+                ImageUrl = v.ImageUrl,
+                VerseKey = v.VerseKey,
+                VerseNumber = v.VerseNumber,
+                JuzNumber = v.JuzNumber
+            }).ToList();
+
+            return verseDtos;
+
         }
 
-        public async Task<Verse> GetVerseByIdAsync(int verseId)
+        public async Task<VerseDto> GetVerseByIdAsync(int verseId)
         {
-            return await _context.Verses.Where(v => v.Id == verseId).SingleOrDefaultAsync();
+            var verse =  await _context.Verses.Where(v => v.Id == verseId).SingleOrDefaultAsync();
+
+            var verseDto = new VerseDto
+            {
+                VerseKey = verse.VerseKey,
+                Id = verse.Id,
+                VerseNumber = verse.VerseNumber,
+                ChapterId = verse.ChapterId,
+                ChapterName = verse.Chapter.Name,
+                TextUthmani = verse.TextUthmani,
+                ImageUrl = verse.ImageUrl,
+                JuzNumber = verse.JuzNumber
+
+            };
+
+            return verseDto;
         }
 
-        public async Task<Verse> GetVerseByKeyAsync(string key)
+        public async Task<VerseDto> GetVerseByKeyAsync(string key)
         {
-            return await _context.Verses.Where(v => v.VerseKey == key).SingleOrDefaultAsync();
+            var verse =  await _context.Verses.Where(v => v.VerseKey == key).SingleOrDefaultAsync();
+
+            var verseDto = new VerseDto
+            {
+                VerseKey = verse.VerseKey,
+                Id = verse.Id,
+                VerseNumber = verse.VerseNumber,
+                ChapterId = verse.ChapterId,
+                ChapterName = verse.Chapter.Name,
+                TextUthmani = verse.TextUthmani,
+                ImageUrl = verse.ImageUrl,
+                JuzNumber = verse.JuzNumber
+
+            };
+
+            return verseDto;
         }
 
-        public async Task<ICollection<Verse>> GetVersesByChapterIdAsync(int chapterId)
+        public async Task<ICollection<VerseDto>> GetVersesByChapterIdAsync(int chapterId)
         {
-            return await _context.Verses.Where(v => v.ChapterId == chapterId).ToListAsync();
-             
+            var verses =  await _context.Verses.Where(v => v.ChapterId == chapterId).ToListAsync();
+
+            var verseDtos = verses.Select(v => new VerseDto
+            {
+                Id = v.Id,
+                ChapterId = v.ChapterId,
+                ChapterName = v.Chapter.Name,
+                TextUthmani = v.TextUthmani,
+                ImageUrl = v.ImageUrl,
+                VerseKey = v.VerseKey,
+                VerseNumber = v.VerseNumber,
+                JuzNumber = v.JuzNumber
+            }).ToList();
+
+            return verseDtos;
+
         }
 
         public async Task PopulateVersesAsync()

@@ -57,24 +57,64 @@ namespace QuranBuddyAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ICollection<Chapter>> GetAllChaptersAsync()
+        public async Task<ICollection<ChapterDto>> GetAllChaptersAsync()
         {
-            return await _context.Chapters.ToListAsync();
+            var chapters = await _context.Chapters.ToListAsync();
+
+            var chapterDtos = chapters.Select(c => new ChapterDto
+            {
+                Id = c.Id,
+                VersesCount = c.VersesCount,
+                Name = c.Name,
+                NameArabic = c.NameArabic,
+                TranslatedName = c.TranslatedName.Name,
+                TranslatedLanguage = c.TranslatedName.LanguageName,
+                RevelationPlace = c.RevelationPlace,
+                BismillahPre = c.BismillahPre,
+
+            }).ToList();
+
+            return chapterDtos;
         }
 
-        public async Task<Chapter> GetChapterByIdAsync(int id)
+        public async Task<ChapterDto> GetChapterByIdAsync(int id)
         {
             var chapter = await _context.Chapters.Where(c => c.Id == id).FirstOrDefaultAsync();
 
+            var chapterDto = new ChapterDto
+            {
+                Id = chapter.Id,
+                VersesCount = chapter.VersesCount,
+                Name = chapter.Name,
+                NameArabic = chapter.NameArabic,
+                TranslatedName = chapter.TranslatedName.Name,
+                TranslatedLanguage = chapter.TranslatedName.LanguageName,
+                RevelationPlace = chapter.RevelationPlace,
+                BismillahPre = chapter.BismillahPre,
 
-            return chapter;
+            };
+
+            return chapterDto;
         }
 
-        public async Task<ICollection<Chapter>> GetChaptersByNameAsync(string name)
+        public async Task<ICollection<ChapterDto>> GetChaptersByNameAsync(string name)
         {
             var chapters =  await _context.Chapters.Where(c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
 
-            return chapters;
+            var chapterDtos = chapters.Select(c => new ChapterDto
+            {
+                Id = c.Id,
+                VersesCount = c.VersesCount,
+                Name = c.Name,
+                NameArabic = c.NameArabic,
+                TranslatedName = c.TranslatedName.Name,
+                TranslatedLanguage = c.TranslatedName.LanguageName,
+                RevelationPlace = c.RevelationPlace,
+                BismillahPre = c.BismillahPre,
+
+            }).ToList();
+
+            return chapterDtos;
         }
 
 
