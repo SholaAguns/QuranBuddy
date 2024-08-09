@@ -1,15 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuranBuddyAPI.Models
 {
+    [Keyless]
     public class Flashcard
     {
-        public Guid Id { get; set; }
 
-        public Guid FlashcardId { get; set; }
-
-        public virtual FlashcardSet FlashcardSet { get; set; }
         public string Question { get; set; }
 
         public string Answer { get; set; }
@@ -25,8 +23,8 @@ namespace QuranBuddyAPI.Models
 
         public string? Name { get; set; }
 
-
-        public virtual List<Flashcard>? Flashcards { get; set; }
+        [NotMapped]
+        public List<Flashcard>? Flashcards { get; set; }
 
         public int FlashcardAmount { get; set; }
 

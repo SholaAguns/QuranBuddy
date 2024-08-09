@@ -36,9 +36,6 @@ namespace QuranBuddyAPI.FlashcardServices
 
                 var flashcard = new Flashcard()
                 {
-                    Id = Guid.NewGuid(),
-                    FlashcardId = flashcardSet.Id,
-                    FlashcardSet = flashcardSet,
                     Question = verse.TextUthmani,
                     Answer = chapter.Name,
                     ImageUrl = verse.ImageUrl,
@@ -46,7 +43,7 @@ namespace QuranBuddyAPI.FlashcardServices
 
                 };
 
-                _context.Flashcards.Add(flashcard);
+                flashcardSet.Flashcards.Add(flashcard);
                 
             }
 
@@ -85,9 +82,6 @@ namespace QuranBuddyAPI.FlashcardServices
 
                 var flashcard = new Flashcard()
                 {
-                    Id = Guid.NewGuid(),
-                    FlashcardId = flashcardSet.Id,
-                    FlashcardSet = flashcardSet,
                     Question = verse.TextUthmani,
                     Answer = chapter.Name,
                     ImageUrl = verse.ImageUrl
@@ -95,7 +89,11 @@ namespace QuranBuddyAPI.FlashcardServices
 
                 };
 
-                _context.Flashcards.Add(flashcard);
+                Console.WriteLine("Flashcard chpater name: " + flashcard.Answer);
+
+
+
+                flashcardSet.Flashcards.Add(flashcard);
                 //flashcardSet.Flashcards.Add(flashcard);
             }
 

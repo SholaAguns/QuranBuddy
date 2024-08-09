@@ -10,7 +10,6 @@ namespace QuranBuddyAPI.Contexts
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Verse> Verses { get; set; }
 
-        public DbSet<Flashcard> Flashcards { get; set; }
         public DbSet<FlashcardSet> FlashcardSets { get; set; }
 
 
@@ -44,17 +43,19 @@ namespace QuranBuddyAPI.Contexts
             
 
 
-            modelBuilder.Entity<Flashcard>()
-                .HasKey(f => f.Id);
+            //modelBuilder.Entity<Flashcard>()
+            //    .HasKey(f => f.Id);
 
             modelBuilder.Entity<FlashcardSet>()
                 .HasKey(f => f.Id);
 
-            modelBuilder.Entity<FlashcardSet>()
-                .HasMany(f => f.Flashcards)
-                .WithOne(f => f.FlashcardSet)
-                .HasForeignKey(f => f.FlashcardId)
-                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Flashcard>().HasNoKey();
+
+            //modelBuilder.Entity<FlashcardSet>()
+            //    .HasMany(f => f.Flashcards)
+            //    .WithOne(f => f.FlashcardSet)
+            //    .HasForeignKey(f => f.FlashcardId)
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
