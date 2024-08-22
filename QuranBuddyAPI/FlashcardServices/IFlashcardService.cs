@@ -1,4 +1,5 @@
 ﻿using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
 
 namespace QuranBuddyAPI.FlashcardServices
 {

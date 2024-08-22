@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xX8czeiqFBU9dfZX32PLZVby/Mvn42Ftf9LnBD1UrhKVI1u3915Advfm6b43vdUNwh9mN0Jc7HBPSbLVMhzdXA==",
+  "dgSpecHash": "50ff2Bnwyrj/2j9lqCebxcDpFb+ZJONMQ5efuNtshkrezfEZrgyTHxZyubElEpYwQtwGWQq3Z0uJvFLSoEsqyg==",
   "success": true,
   "projectFilePath": "C:\\Work\\Training\\API\\QuranBuddy\\QuranBuddyAPI\\QuranBuddyAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

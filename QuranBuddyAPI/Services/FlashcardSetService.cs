@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using QuranBuddyAPI.Contexts;
 using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
 using System.Data.Entity.Core;
 
 namespace QuranBuddyAPI.Services
@@ -15,17 +16,11 @@ namespace QuranBuddyAPI.Services
             _context = context;
         }
 
-        public async Task<ICollection<FlashcardSetResponse>> GetAllFlashcardSetsAsync()
+        public async Task<ICollection<FlashcardSet>> GetAllFlashcardSetsAsync()
         {
             var flashcardSets = await _context.FlashcardSets.ToListAsync();
 
-            var flashcardSetResponses = flashcardSets.Select(f => new FlashcardSetResponse
-            {
-                Id = f.Id,
-                Name = f.Name
-            }).ToList();
-
-            return flashcardSetResponses;
+            return flashcardSets;
         }
 
         public async Task<FlashcardSet> GetFlashcardSetByIdAsync(Guid id)
@@ -33,17 +28,13 @@ namespace QuranBuddyAPI.Services
             return await _context.FlashcardSets.SingleOrDefaultAsync(f => f.Id == id);
         }
 
-        public async Task<ICollection<FlashcardSetResponse>> GetFlashcardSetByNameAsync(string name)
+        public async Task<ICollection<FlashcardSet>> GetFlashcardSetByNameAsync(string name)
         {
             var flashcardSets = await _context.FlashcardSets.Where(f => f.Name.ToLower().Contains(name.ToLower())).ToListAsync();
 
-            var flashcardSetResponses = flashcardSets.Select(f => new FlashcardSetResponse
-            {
-                Id = f.Id,
-                Name = f.Name
-            }).ToList();
+     
 
-            return flashcardSetResponses;
+            return flashcardSets;
 
         }
 

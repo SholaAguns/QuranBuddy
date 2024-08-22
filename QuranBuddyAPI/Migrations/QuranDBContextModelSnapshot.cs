@@ -21,7 +21,7 @@ namespace QuranBuddyAPI.Migrations
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true);
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.Chapter", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.Chapter", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace QuranBuddyAPI.Migrations
                     b.ToTable("Chapters");
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.Flashcard", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.Flashcard", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,7 +60,7 @@ namespace QuranBuddyAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("FlashcardId")
+                    b.Property<Guid>("FlashcardSetId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ImageUrl")
@@ -73,12 +73,12 @@ namespace QuranBuddyAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FlashcardId");
+                    b.HasIndex("FlashcardSetId");
 
                     b.ToTable("Flashcards");
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.FlashcardSet", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.FlashcardSet", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -107,7 +107,7 @@ namespace QuranBuddyAPI.Migrations
                     b.ToTable("FlashcardSets");
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.Verse", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.Verse", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,9 +159,9 @@ namespace QuranBuddyAPI.Migrations
                     b.ToTable("Verses");
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.Chapter", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.Chapter", b =>
                 {
-                    b.OwnsOne("QuranBuddyAPI.Models.TranslatedName", "TranslatedName", b1 =>
+                    b.OwnsOne("QuranBuddyAPI.Entities.TranslatedName", "TranslatedName", b1 =>
                         {
                             b1.Property<int>("ChapterId")
                                 .HasColumnType("INTEGER");
@@ -186,26 +186,26 @@ namespace QuranBuddyAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.Flashcard", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.Flashcard", b =>
                 {
-                    b.HasOne("QuranBuddyAPI.Models.FlashcardSet", "FlashcardSet")
+                    b.HasOne("QuranBuddyAPI.Entities.FlashcardSet", "FlashcardSet")
                         .WithMany("Flashcards")
-                        .HasForeignKey("FlashcardId")
+                        .HasForeignKey("FlashcardSetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("FlashcardSet");
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.Verse", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.Verse", b =>
                 {
-                    b.HasOne("QuranBuddyAPI.Models.Chapter", "Chapter")
+                    b.HasOne("QuranBuddyAPI.Entities.Chapter", "Chapter")
                         .WithMany("Verses")
                         .HasForeignKey("ChapterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsMany("QuranBuddyAPI.Models.Translation", "Translations", b1 =>
+                    b.OwnsMany("QuranBuddyAPI.Entities.Translation", "Translations", b1 =>
                         {
                             b1.Property<int>("VerseId")
                                 .HasColumnType("INTEGER");
@@ -234,12 +234,12 @@ namespace QuranBuddyAPI.Migrations
                     b.Navigation("Translations");
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.Chapter", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.Chapter", b =>
                 {
                     b.Navigation("Verses");
                 });
 
-            modelBuilder.Entity("QuranBuddyAPI.Models.FlashcardSet", b =>
+            modelBuilder.Entity("QuranBuddyAPI.Entities.FlashcardSet", b =>
                 {
                     b.Navigation("Flashcards");
                 });

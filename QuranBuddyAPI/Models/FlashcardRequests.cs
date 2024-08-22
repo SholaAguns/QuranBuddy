@@ -1,41 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuranBuddyAPI.Models
 {
-    public class Flashcard
-    {
-        public Guid Id { get; set; }
-
-        public Guid FlashcardId { get; set; }
-
-        public virtual FlashcardSet FlashcardSet { get; set; }
-        public string Question { get; set; }
-
-        public string Answer { get; set; }
-
-        public string ImageUrl { get; set; }
-    }
-
-    public class FlashcardSet
-    {
-        public Guid Id { get; set; }
-
-        public string Type { get; set; }
-
-        public string? Name { get; set; }
-
-
-        public virtual List<Flashcard>? Flashcards { get; set; }
-
-        public int FlashcardAmount { get; set; }
-
-        public List<string> UserAnswers { get; set; } = new List<string>();
-
-        public List<bool> Report { get; set; } = new List<bool>();
-
-    }
-
     public class FlashcardRequest
     {
         [Range(2, 50, ErrorMessage = "Amount must be between 5 and 50.")]
@@ -84,7 +50,7 @@ namespace QuranBuddyAPI.Models
 
         [AllowedNamesLengthEndAttribute(20, ErrorMessage = "Name length limit is 20 characters")]
         public List<string> NameList { get; set; }
-        
+
     }
 
     public class FlashcardSetUpdateNameRequest
@@ -104,13 +70,4 @@ namespace QuranBuddyAPI.Models
         [AllowedNamesLengthEndAttribute(30, ErrorMessage = "Name length limit is 30 characters")]
         public List<string> UserAnswers { get; set; }
     }
-
-    public class FlashcardSetResponse
-    {
-
-        public Guid Id { get; set; }
-
-        public string? Name { get; set; }
-    }
-
 }

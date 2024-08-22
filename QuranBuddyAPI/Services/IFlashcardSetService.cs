@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
 
 namespace QuranBuddyAPI.Services
 {
     public interface IFlashcardSetService
     {
-        public Task<ICollection<FlashcardSetResponse>> GetAllFlashcardSetsAsync();
+        public Task<ICollection<FlashcardSet>> GetAllFlashcardSetsAsync();
 
         public Task<FlashcardSet> GetFlashcardSetByIdAsync(Guid id);
 
-        public Task<ICollection<FlashcardSetResponse>> GetFlashcardSetByNameAsync(string name);
+        public Task<ICollection<FlashcardSet>> GetFlashcardSetByNameAsync(string name);
         
         public Task UpdateFlashcardSetNameAsync(FlashcardSetUpdateNameRequest flashcardRequest);
 

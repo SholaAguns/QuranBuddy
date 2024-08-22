@@ -1,4 +1,5 @@
-﻿using QuranBuddyAPI.Models;
+﻿using QuranBuddyAPI.Entities;
+using QuranBuddyAPI.Models;
 
 namespace QuranBuddyAPI.Services
 {
@@ -7,10 +8,10 @@ namespace QuranBuddyAPI.Services
 
         public Task PopulateChaptersAsync();
 
-        public Task<ChapterDto> GetChapterByIdAsync(int id);
+        public Task<Chapter> GetChapterByIdAsync(int id);
 
-        public Task<ICollection<ChapterDto>> GetChaptersByNameAsync(string name);
+        public Task<ICollection<Chapter>> GetChaptersByNameAsync(string name);
 
-        public Task<ICollection<ChapterDto>> GetAllChaptersAsync();
+        public Task<ICollection<Chapter>> GetAllChaptersAsync();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
 using QuranBuddyAPI.Contexts;
 using Microsoft.EntityFrameworkCore;
 using RestSharp;
@@ -57,7 +58,7 @@ namespace QuranBuddyAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<ICollection<ChapterDto>> GetAllChaptersAsync()
+        public async Task<ICollection<Chapter>> GetAllChaptersAsync()
         {
             var chapters = await _context.Chapters.ToListAsync();
 
@@ -74,10 +75,10 @@ namespace QuranBuddyAPI.Services
 
             }).ToList();
 
-            return chapterDtos;
+            return chapters;
         }
 
-        public async Task<ChapterDto> GetChapterByIdAsync(int id)
+        public async Task<Chapter> GetChapterByIdAsync(int id)
         {
             var chapter = await _context.Chapters.Where(c => c.Id == id).FirstOrDefaultAsync();
 
@@ -94,10 +95,10 @@ namespace QuranBuddyAPI.Services
 
             };
 
-            return chapterDto;
+            return chapter;
         }
 
-        public async Task<ICollection<ChapterDto>> GetChaptersByNameAsync(string name)
+        public async Task<ICollection<Chapter>> GetChaptersByNameAsync(string name)
         {
             var chapters =  await _context.Chapters.Where(c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
 
@@ -114,7 +115,7 @@ namespace QuranBuddyAPI.Services
 
             }).ToList();
 
-            return chapterDtos;
+            return chapters;
         }
 
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuranBuddyAPI.Contexts;
 using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
 using QuranBuddyAPI.Services;
 using QuranBuddyAPI_Tests.Models;
 using FluentAssertions;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuranBuddyAPI.Contexts;
 using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
 using QuranBuddyAPI.Services;
 using System;
 
@@ -37,7 +38,7 @@ namespace QuranBuddyAPI.FlashcardServices
                 var flashcard = new Flashcard()
                 {
                     Id = Guid.NewGuid(),
-                    FlashcardId = flashcardSet.Id,
+                    FlashcardSetId = flashcardSet.Id,
                     FlashcardSet = flashcardSet,
                     Question = verse.TextUthmani,
                     Answer = chapter.Name,
@@ -86,7 +87,7 @@ namespace QuranBuddyAPI.FlashcardServices
                 var flashcard = new Flashcard()
                 {
                     Id = Guid.NewGuid(),
-                    FlashcardId = flashcardSet.Id,
+                    FlashcardSetId = flashcardSet.Id,
                     FlashcardSet = flashcardSet,
                     Question = verse.TextUthmani,
                     Answer = chapter.Name,

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using QuranBuddyAPI.FlashcardServices;
 using QuranBuddyAPI.Models;
 using QuranBuddyAPI.Services;
@@ -10,11 +11,13 @@ namespace QuranBuddyAPI.Controllers
     public class FlashcardController : Controller
     {
         private readonly IServiceFactory _serviceFactory;
+        private readonly IMapper _mapper;
 
 
-        public FlashcardController(IServiceFactory serviceFactory)
+        public FlashcardController(IServiceFactory serviceFactory, IMapper mapper)
         {
             _serviceFactory = serviceFactory;
+            _mapper = mapper;
         }
 
 
@@ -25,9 +28,11 @@ namespace QuranBuddyAPI.Controllers
 
             
 
-            var flashcardSet = flashcardService.GetFlashcardSetAsync(flashcardRequest.Amount);
+            var flashcardSet = await flashcardService.GetFlashcardSetAsync(flashcardRequest.Amount);
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
 
         [HttpPost("by-range")]
@@ -39,7 +44,9 @@ namespace QuranBuddyAPI.Controllers
 
             var flashcardSet = flashcardService.GetFlashcardSetByRangeAsync(flashcardRequest.Amount, flashcardRequest.RangeStart, flashcardRequest.RangeEnd);
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
 
         [HttpPost("by-ids")]
@@ -49,7 +56,9 @@ namespace QuranBuddyAPI.Controllers
 
             var flashcardSet = flashcardService.GetFlashcardSetByIdsAsync(flashcardRequest.Amount, flashcardRequest.IdList);
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
 
         [HttpPost("by-names")]
@@ -59,7 +68,9 @@ namespace QuranBuddyAPI.Controllers
 
             var flashcardSet = flashcardService.GetFlashcardSetByNamesAsync(flashcardRequest.Amount, flashcardRequest.NameList);
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
     }
 }

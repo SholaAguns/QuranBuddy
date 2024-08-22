@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using QuranBuddyAPI.Entities;
 using QuranBuddyAPI.Models;
 using QuranBuddyAPI.Services;
 using System.Xml.Linq;
@@ -10,11 +12,13 @@ namespace QuranBuddyAPI.Controllers
     public class VerseController : Controller
     {
         private readonly IVerseService _verseService;
+        private readonly IMapper _mapper;
 
 
-        public VerseController(IVerseService verseService )
+        public VerseController(IVerseService verseService, IMapper mapper)
         {
             _verseService = verseService;
+            _mapper = mapper;
         }
 
         [HttpGet("by-chapter-id/{id}", Name = "GetVersesByChapterId")]
@@ -28,14 +32,16 @@ namespace QuranBuddyAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var verses = _verseService.GetVersesByChapterIdAsync(id);
+            var verses = await _verseService.GetVersesByChapterIdAsync(id);
 
             if (verses == null)
             {
                 return NoContent();
             }
 
-            return Ok(verses);
+            var verseDtos = _mapper.Map<ICollection<VerseDto>>(verses);
+
+            return Ok(verseDtos);
 
         }
 
@@ -44,14 +50,16 @@ namespace QuranBuddyAPI.Controllers
         {
 
 
-            var verse = _verseService.GetVerseByIdAsync(id);
+            var verse = await _verseService.GetVerseByIdAsync(id);
 
             if (verse == null)
             {
                 return NoContent();
             }
 
-            return Ok(verse);
+            var verseDto = _mapper.Map<VerseDto>(verse);
+
+            return Ok(verseDto);
 
         }
 
@@ -65,7 +73,7 @@ namespace QuranBuddyAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var verses = _verseService.GetVersesByChapterNameAsync(name);
+            var verses = await _verseService.GetVersesByChapterNameAsync(name);
 
             if (verses == null)
             {
@@ -73,7 +81,9 @@ namespace QuranBuddyAPI.Controllers
             }
 
 
-            return Ok(verses);
+            var verseDtos = _mapper.Map<ICollection<VerseDto>>(verses);
+
+            return Ok(verseDtos);
 
         }
     }

@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using QuranBuddyAPI.Services;
 using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
+using AutoMapper;
 
 namespace QuranBuddyAPI.Controllers
 {
@@ -10,11 +12,13 @@ namespace QuranBuddyAPI.Controllers
     public class ChapterController : Controller
     {
         private readonly IChapterService _chapterService;
+        private readonly IMapper _mapper;
 
 
-        public ChapterController(IChapterService chapterService)
+        public ChapterController(IChapterService chapterService, IMapper mapper)
         {
             _chapterService = chapterService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -22,7 +26,9 @@ namespace QuranBuddyAPI.Controllers
         {
             var chapters = await _chapterService.GetAllChaptersAsync();
 
-            return Ok(chapters);
+            var chapterDtos = _mapper.Map<ICollection<ChapterDto>>(chapters);
+
+            return Ok(chapterDtos);
         }
 
         [HttpGet("by-id/{id}", Name = "GetChapterById")]
@@ -44,8 +50,10 @@ namespace QuranBuddyAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(chapter);
-            
+            var chapterDto = _mapper.Map<ICollection<ChapterDto>>(chapter);
+
+            return Ok(chapterDto);
+
         }
 
         [HttpGet("by-name/{name}", Name = "GetChapterByName")]
@@ -59,7 +67,9 @@ namespace QuranBuddyAPI.Controllers
             }
             var chapters = await _chapterService.GetChaptersByNameAsync(name);
 
-            return Ok(chapters);
+            var chapterDtos = _mapper.Map<ICollection<ChapterDto>>(chapters);
+
+            return Ok(chapterDtos);
 
         }
     }

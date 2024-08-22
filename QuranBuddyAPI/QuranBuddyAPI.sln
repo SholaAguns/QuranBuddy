@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuranBuddyAPI", "QuranBuddy
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8CD551AF-EB65-4382-9D5E-9E62510C036B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuranBuddyAPI_Tests", "..\Tests\QuranBuddyAPI_Tests\QuranBuddyAPI_Tests.csproj", "{7049DCBF-A7D5-46D3-984A-3A7D69001814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuranBuddyAPI_Tests", "..\Tests\QuranBuddyAPI_Tests\QuranBuddyAPI_Tests.csproj", "{7049DCBF-A7D5-46D3-984A-3A7D69001814}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{33B29409-5881-4C27-B70A-1AE7A75A8DE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7049DCBF-A7D5-46D3-984A-3A7D69001814} = {8CD551AF-EB65-4382-9D5E-9E62510C036B}
+		{33B29409-5881-4C27-B70A-1AE7A75A8DE8} = {8CD551AF-EB65-4382-9D5E-9E62510C036B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3CE9D4F7-7A3E-4EDE-AFCC-5FC9CABCF9FC}

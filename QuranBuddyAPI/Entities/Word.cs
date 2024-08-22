@@ -1,4 +1,4 @@
-﻿namespace QuranBuddyAPI.Models
+﻿namespace QuranBuddyAPI.Entities
 {
     public class Word
     {

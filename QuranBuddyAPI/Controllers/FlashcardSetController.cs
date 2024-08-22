@@ -2,6 +2,8 @@
 using QuranBuddyAPI.FlashcardServices;
 using QuranBuddyAPI.Models;
 using QuranBuddyAPI.Services;
+using AutoMapper;
+using QuranBuddyAPI.Entities;
 
 
 namespace QuranBuddyAPI.Controllers
@@ -11,11 +13,13 @@ namespace QuranBuddyAPI.Controllers
     public class FlashcardSetController : ControllerBase
     {
         private readonly IFlashcardSetService _flashbackSetService;
+        private readonly IMapper _mapper;
 
 
-        public FlashcardSetController(IFlashcardSetService flashbackSetService)
+        public FlashcardSetController(IFlashcardSetService flashbackSetService, IMapper mapper)
         {
             _flashbackSetService = flashbackSetService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -23,7 +27,9 @@ namespace QuranBuddyAPI.Controllers
         {
             var flashcardSets = await _flashbackSetService.GetAllFlashcardSetsAsync();
 
-            return Ok(flashcardSets);
+            var flashcardSetDtos = _mapper.Map<ICollection<FlashcardSetDto>>(flashcardSets);
+
+            return Ok(flashcardSetDtos);
         }
 
         [HttpGet("by-id/{id}")]
@@ -34,7 +40,9 @@ namespace QuranBuddyAPI.Controllers
 
             if (flashcardSet == null) return NotFound();
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
 
         [HttpGet("by-name/{name}")]
@@ -45,7 +53,9 @@ namespace QuranBuddyAPI.Controllers
 
             if (flashcardSet == null) return NotFound();
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
 
         [HttpPut("update-name")]
@@ -57,7 +67,9 @@ namespace QuranBuddyAPI.Controllers
 
             await _flashbackSetService.UpdateFlashcardSetNameAsync(flashcardRequest);
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
 
         [HttpPost("set-answers")]
@@ -69,7 +81,9 @@ namespace QuranBuddyAPI.Controllers
 
             await _flashbackSetService.SetFlashcardSetAnwsersAsync(flashcardRequest);
 
-            return Ok(flashcardSet);
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuranBuddyAPI.Models;
+using QuranBuddyAPI.Entities;
 
 namespace QuranBuddyAPI.Contexts
 {
@@ -53,7 +54,7 @@ namespace QuranBuddyAPI.Contexts
             modelBuilder.Entity<FlashcardSet>()
                 .HasMany(f => f.Flashcards)
                 .WithOne(f => f.FlashcardSet)
-                .HasForeignKey(f => f.FlashcardId)
+                .HasForeignKey(f => f.FlashcardSetId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

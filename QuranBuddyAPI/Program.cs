@@ -21,6 +21,7 @@ builder.Services.AddDbContext<QuranDBContext>(
     dbContextOptions => dbContextOptions.UseLazyLoadingProxies().UseSqlite(
         builder.Configuration["ConnectionStrings:DefaultConnection"]));
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IChapterService, ChapterService>();
 builder.Services.AddScoped<ChapterService>();
 
@@ -28,8 +29,10 @@ builder.Services.AddScoped<IVerseService, VerseService>();
 builder.Services.AddScoped<VerseService>();
 
 builder.Services.AddScoped<IServiceFactory, ServiceFactory>();
-builder.Services.AddScoped<DefaultFlashcardService>();
+builder.Services.AddScoped<DefaultFlashcardService>(); 
 builder.Services.AddScoped<QuranFlashcardService>();
+
+builder.Services.AddScoped<IFlashcardSetService, FlashcardSetService>();
 
 var app = builder.Build();
 

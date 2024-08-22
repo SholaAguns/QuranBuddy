@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LjTUMroR8xMjEWt5okfbX9G+xUL0HFuAXOTo4Dpm9i9Xs3PXXKeuZEdPMfMgRcL85e3ZSZcr8vqBkfOwl7v+zA==",
+  "dgSpecHash": "40X+I0PHzePhm2UI9tohAyKteZey4vrg9f67uUapRJbGWLJpWZypAs6Ei+4/6uyGJz23Pmv7MFA97yDoegJS9A==",
   "success": true,
   "projectFilePath": "C:\\Work\\Training\\API\\QuranBuddy\\Tests\\QuranBuddyAPI_Tests\\QuranBuddyAPI_Tests.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\SholaAgunbiade\\.nuget\\packages\\entityframework\\6.5.1\\entityframework.6.5.1.nupkg.sha512",
