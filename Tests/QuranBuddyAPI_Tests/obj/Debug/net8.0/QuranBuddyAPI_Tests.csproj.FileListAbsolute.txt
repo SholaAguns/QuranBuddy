@@ -58,7 +58,6 @@ C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\Syste
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\System.Drawing.Common.dll
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\System.Text.Json.dll
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\System.Windows.Extensions.dll
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\xunit.abstractions.dll
 C:\Work\Training\API\QuranBuddy\Tests\QuranBuddyAPI_Tests\bin\Debug\net8.0\xunit.assert.dll

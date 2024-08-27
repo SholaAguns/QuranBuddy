@@ -60,7 +60,7 @@ namespace QuranBuddyAPI_Tests.ServiceTests.ChapterService_Tests
         [Fact]
         public async Task Then_Null_Should_Be_Returned_When_Chapter_Does_Not_Exist()
         {
-            var testId = 180;
+            var testId = 1;
             var chapterService = new ChapterService(_context);
 
             var result = await chapterService.GetChapterByIdAsync(testId);

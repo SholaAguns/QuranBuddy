@@ -4355,6 +4355,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://feed.sdkbin.com/auth/6e053353-7593-4bb4-b0a7-dce3bc765109/youlend-phobos/v3/index.json": {},
         "https://youlend.pkgs.visualstudio.com/_packaging/Youlend/nuget/v3/index.json": {}
@@ -4448,7 +4449,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

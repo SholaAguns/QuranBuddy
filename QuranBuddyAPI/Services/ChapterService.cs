@@ -62,38 +62,13 @@ namespace QuranBuddyAPI.Services
         {
             var chapters = await _context.Chapters.ToListAsync();
 
-            var chapterDtos = chapters.Select(c => new ChapterDto
-            {
-                Id = c.Id,
-                VersesCount = c.VersesCount,
-                Name = c.Name,
-                NameArabic = c.NameArabic,
-                TranslatedName = c.TranslatedName.Name,
-                TranslatedLanguage = c.TranslatedName.LanguageName,
-                RevelationPlace = c.RevelationPlace,
-                BismillahPre = c.BismillahPre,
-
-            }).ToList();
-
             return chapters;
         }
 
         public async Task<Chapter> GetChapterByIdAsync(int id)
         {
-            var chapter = await _context.Chapters.Where(c => c.Id == id).FirstOrDefaultAsync();
+            var chapter = await _context.Chapters.Where(c => c.Id == id).SingleOrDefaultAsync();
 
-            var chapterDto = new ChapterDto
-            {
-                Id = chapter.Id,
-                VersesCount = chapter.VersesCount,
-                Name = chapter.Name,
-                NameArabic = chapter.NameArabic,
-                TranslatedName = chapter.TranslatedName.Name,
-                TranslatedLanguage = chapter.TranslatedName.LanguageName,
-                RevelationPlace = chapter.RevelationPlace,
-                BismillahPre = chapter.BismillahPre,
-
-            };
 
             return chapter;
         }
@@ -102,18 +77,6 @@ namespace QuranBuddyAPI.Services
         {
             var chapters =  await _context.Chapters.Where(c => c.Name.ToLower().Contains(name.ToLower())).ToListAsync();
 
-            var chapterDtos = chapters.Select(c => new ChapterDto
-            {
-                Id = c.Id,
-                VersesCount = c.VersesCount,
-                Name = c.Name,
-                NameArabic = c.NameArabic,
-                TranslatedName = c.TranslatedName.Name,
-                TranslatedLanguage = c.TranslatedName.LanguageName,
-                RevelationPlace = c.RevelationPlace,
-                BismillahPre = c.BismillahPre,
-
-            }).ToList();
 
             return chapters;
         }
