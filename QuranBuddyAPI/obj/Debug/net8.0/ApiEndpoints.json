@@ -1,0 +1,265 @@
+[
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.AdminController",
+    "Method": "DeleteAllChapters",
+    "RelativePath": "api/admin/delete-all-chapters",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.AdminController",
+    "Method": "PopulateChapters",
+    "RelativePath": "api/admin/populate-chapters",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.AdminController",
+    "Method": "PopulateVerses",
+    "RelativePath": "api/admin/populate-verses",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.ChapterController",
+    "Method": "GetChapters",
+    "RelativePath": "api/chapters",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.ChapterController",
+    "Method": "GetChapterById",
+    "RelativePath": "api/chapters/by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetChapterById"
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.ChapterController",
+    "Method": "GetChapterByString",
+    "RelativePath": "api/chapters/by-name/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetChapterByName"
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardController",
+    "Method": "GetFlashcard",
+    "RelativePath": "api/flashcards",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "flashcardRequest",
+        "Type": "QuranBuddyAPI.Models.FlashcardRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardController",
+    "Method": "GetFlashcardByIds",
+    "RelativePath": "api/flashcards/by-ids",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "flashcardRequest",
+        "Type": "QuranBuddyAPI.Models.FlashcardRequestByIds",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardController",
+    "Method": "GetFlashcardByNames",
+    "RelativePath": "api/flashcards/by-names",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "flashcardRequest",
+        "Type": "QuranBuddyAPI.Models.FlashcardRequestByNames",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardController",
+    "Method": "GetFlashcardByRange",
+    "RelativePath": "api/flashcards/by-range",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "flashcardRequest",
+        "Type": "QuranBuddyAPI.Models.FlashcardRequestByRange",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
+    "Method": "GetFlashcardSets",
+    "RelativePath": "api/FlashcardSet",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
+    "Method": "GetFlashcardSetById",
+    "RelativePath": "api/FlashcardSet/by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
+    "Method": "GetFlashcardSetByName",
+    "RelativePath": "api/FlashcardSet/by-name/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
+    "Method": "SetFlashcardSetAnwsers",
+    "RelativePath": "api/FlashcardSet/set-answers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "flashcardRequest",
+        "Type": "QuranBuddyAPI.Models.FlashcardSetAnswersRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
+    "Method": "UpdateFlashcardSetName",
+    "RelativePath": "api/FlashcardSet/update-name",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "flashcardRequest",
+        "Type": "QuranBuddyAPI.Models.FlashcardSetUpdateNameRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.VerseController",
+    "Method": "GetVersesChapterById",
+    "RelativePath": "api/verses/by-chapter-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetVersesByChapterId"
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.VerseController",
+    "Method": "GetVersesByChapterName",
+    "RelativePath": "api/verses/by-chapter-name/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetVersesByChapterName"
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.VerseController",
+    "Method": "GetVerseById",
+    "RelativePath": "api/verses/by-id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetVerseById"
+  }
+]
