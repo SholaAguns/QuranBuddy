@@ -1,0 +1,9 @@
+<div *ngIf="chapter$ | async as chapter">
+    <h1>{{ chapter.name }}</h1>
+    <p>Total Verses: {{ chapter.versesCount }}</p>
+  
+    <div *ngFor="let verse of chapter.verses">
+      <app-verse-view [verse]="verse"></app-verse-view>
+    </div>
+</div>
+  

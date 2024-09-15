@@ -1,0 +1,9 @@
+<div *ngIf="chapters$ | async as chapters">
+    <mat-form-field appearance="fill">
+      <mat-label>Chapters</mat-label>
+      <mat-select (selectionChange)="onSelect($event.value)">
+        <mat-option *ngFor="let chapter of chapters" [value]="chapter.id">{{ chapter.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+  
