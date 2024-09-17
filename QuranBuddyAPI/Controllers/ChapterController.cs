@@ -50,7 +50,7 @@ namespace QuranBuddyAPI.Controllers
                 return NotFound();
             }
 
-            var chapterDto = _mapper.Map<ICollection<ChapterDto>>(chapter);
+            var chapterDto = _mapper.Map<ChapterDto>(chapter);
 
             return Ok(chapterDto);
 

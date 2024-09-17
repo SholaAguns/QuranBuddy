@@ -1,16 +1,20 @@
-<h2>All Chapters <i (click)="fetchChapters()" role="button" class="bi bi-arrow-clockwise refresh-icon"></i></h2>
+<div class="container">
+  <h2>All Chapters <i (click)="fetchChapters()" role="button" class="bi bi-arrow-clockwise refresh-icon"></i></h2>
 
-<table class="table table-success table-striped">
-    <thead>
-        <tr>
-          <th scope="col">Chapter Number</th>
-          <th scope="col">Chapter Name</th>
-        </tr>
-      </thead>
-    <tbody>
-        <tr *ngFor="let chapter of chapters">
-            <td>{{ chapter.id }}</td>
-            <td>{{ chapter.name }} </td>
+  <table class="table table-success table-striped">
+      <thead>
+          <tr>
+            <th scope="col">Chapter Number</th>
+            <th scope="col">Chapter Name</th>
           </tr>
-    </tbody>
-</table>
+        </thead>
+      <tbody>
+          <tr *ngFor="let chapter of chapters">
+              <td>{{ chapter.id }}</td>
+              <td>
+                <a [routerLink]="['/chapter', chapter.id]">{{ chapter.name }}</a>
+              </td>
+            </tr>
+      </tbody>
+  </table>
+</div>  

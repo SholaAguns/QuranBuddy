@@ -1,1 +1,8 @@
-<p>chapter-view works!</p>
+<div *ngIf=chapter>
+
+  
+    <div *ngFor="let verse of verses">
+      <app-verse-view [verse]="verse"></app-verse-view>
+    </div>
+</div>
+  

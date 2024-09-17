@@ -5,13 +5,14 @@ import { Chapter } from '../shared/models/chapter';
 import { ChapterService } from '../shared/services/chapter-service/chapter-service.service';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-chapter-list',
   standalone: true,
-  imports: [MatSelectModule, MatOptionModule, CommonModule ],
+  imports: [MatSelectModule, MatOptionModule, CommonModule, RouterModule ],
   templateUrl: './chapter-list.component.html',
   styleUrl: './chapter-list.component.scss'
 })

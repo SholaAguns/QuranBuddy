@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Verse } from '../shared/models/verse';
 
 @Component({
   selector: 'app-verse-view',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './verse-view.component.scss'
 })
 export class VerseViewComponent {
-
+  @Input() verse!: Verse;
 }
