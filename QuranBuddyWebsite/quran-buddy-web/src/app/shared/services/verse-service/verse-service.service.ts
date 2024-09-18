@@ -7,7 +7,7 @@ import { Verse } from '../../models/verse';
   providedIn: 'root'
 })
 export class VerseService {
-  private apiUrl = 'https://your-api-url.com/api/verses';
+  private apiUrl = 'http://localhost:5101/api/verses';
 
   constructor(private http: HttpClient) {}
 
@@ -17,5 +17,9 @@ export class VerseService {
 
   getVerseById(id: number): Observable<Verse> {
     return this.http.get<Verse>(`${this.apiUrl}/by-id/${id}`);
+  }
+
+  getVersesByChapterName(name: string): Observable<Verse[]> {
+    return this.http.get<Verse[]>(`${this.apiUrl}/by-chapter-id/${name}`);
   }
 }

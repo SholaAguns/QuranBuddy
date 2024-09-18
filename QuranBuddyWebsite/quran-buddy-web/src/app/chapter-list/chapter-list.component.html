@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="chapters" class="container">
   <h2>All Chapters <i (click)="fetchChapters()" role="button" class="bi bi-arrow-clockwise refresh-icon"></i></h2>
 
   <table class="table table-success table-striped">

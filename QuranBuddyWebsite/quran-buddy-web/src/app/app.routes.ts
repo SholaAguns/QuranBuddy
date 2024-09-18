@@ -11,16 +11,12 @@ export const routes: Routes = [
         path: 'chapter/:id',
         loadComponent: () => import('./chapter-view/chapter-view.component').then(c => c.ChapterViewComponent)           
     },
-    /*{
-        path: 'flashcardsets',
-        loadComponent: () => import('./chapter/chapter-view/chapter-view.component').then(c => c.ChapterViewComponent)           
+    {
+        path: 'create-flashcards',
+        loadComponent: () => import('./create-flashcardset/create-flashcardset.component').then(c => c.CreateFlashcardsetComponent)           
     },
     {
-        path: 'create-flashcardset',
-        loadComponent: () => import('./chapter/chapter-view/chapter-view.component').then(c => c.ChapterViewComponent)           
+        path: 'flashcardset-view',
+        loadComponent: () => import('./flashcardset-view/flashcardset-view.component').then(c => c.FlashcardsetViewComponent)           
     },
-    {
-        path: 'flashcardsets',
-        loadComponent: () => import('./chapter/chapter-view/chapter-view.component').then(c => c.ChapterViewComponent)           
-    },*/
 ];

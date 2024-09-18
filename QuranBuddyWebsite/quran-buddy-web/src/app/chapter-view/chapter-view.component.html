@@ -1,7 +1,9 @@
-<div *ngIf=chapter>
 
-  
+<div *ngIf="chapter" class="container chapter-view"> 
+    <h2>{{ chapter.id }} - {{ chapter.name }}</h2>
+
     <div *ngFor="let verse of verses">
+
       <app-verse-view [verse]="verse"></app-verse-view>
     </div>
 </div>

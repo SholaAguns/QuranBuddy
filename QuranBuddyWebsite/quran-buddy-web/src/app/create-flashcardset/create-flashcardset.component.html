@@ -1,0 +1,75 @@
+<div class="container">
+    <h2>Create flashcards</h2>
+
+    <div class="form-group">
+      <label for="requestType">Select Request Type</label>
+      <select id="requestType" class="form-control" [(ngModel)]="selectedRequestType" (change)="loadRequestForm()">
+        <option *ngFor="let type of requestTypes" [value]="type.value">{{ type.label }}</option>
+      </select>
+    </div>
+
+    <form [formGroup]="flashcardSetRequestForm" (ngSubmit)="createFlashcardSet()">
+      <div *ngIf="selectedRequestType !== ''">
+        <div class="form-group mt-3">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            formControlName="amount"
+            class="form-control"
+    placeholder="Enter amount"
+          />
+        </div>
+  
+        <div class="form-group mt-3">
+          <label for="type">Type</label>
+          <select id="type" formControlName="type" class="form-control">
+            <option *ngFor="let flashcardType of flashcardTypes" [value]="flashcardType.value">{{ flashcardType.label }}</option>
+          </select>
+        </div>
+  
+        <div *ngIf="selectedRequestType === 'byRange'">
+          <div class="form-group mt-3">
+            <label for="rangeStart">Range Start</label>
+            <input
+              type="number"
+              id="rangeStart"
+              formControlName="rangeStart"
+              class="form-control"
+      placeholder="Enter range start"
+            />
+          </div>
+  
+          <div class="form-group mt-3">
+            <label for="rangeEnd">Range End</label>
+            <input
+              type="number"
+              id="rangeEnd"
+              formControlName="rangeEnd"
+              class="form-control"
+      placeholder="Enter range end"
+            />
+          </div>
+        </div>
+  
+        <div *ngIf="selectedRequestType === 'byIds' || selectedRequestType === 'byNames'">
+          <div *ngIf="idList" formArrayName="idList">
+            <div *ngFor="let idControl of idList.controls; let i = index" [formGroupName]="i" class="form-group mt-3">
+              <label for="id">ID {{i + 1}}</label>
+              <input
+                type="number"
+                id="id"
+                formControlName="id"
+                class="form-control"
+        placeholder="Enter ID"
+              />
+              <button type="button" class="btn btn-danger mt-2" (click)="removeIdField(i)">Remove</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary mt-2" (click)="addIdField()">Add ID</button>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="flashcardSetRequestForm.invalid">Create Flashcard Set</button>
+      </div>
+    </form>
+</div>

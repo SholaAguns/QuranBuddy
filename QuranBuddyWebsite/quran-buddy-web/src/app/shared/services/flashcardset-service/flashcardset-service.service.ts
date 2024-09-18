@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FlashcardSet } from '../../models/flashcardset';
+import { FlashcardSetAnswers, FlashcardSetUpdateName } from '../../requests/flashcardset-requests';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlashcardSetService {
-  private baseUrl = 'http://localhost:5000/api/flashcardset'; // Replace with your API base URL
+  private baseUrl = 'http://localhost:5101/api/flashcardset'; // Replace with your API base URL
 
   constructor(private http: HttpClient) {}
 
@@ -21,5 +22,13 @@ export class FlashcardSetService {
 
   getFlashcardSetByName(name: string): Observable<FlashcardSet> {
     return this.http.get<FlashcardSet>(`${this.baseUrl}/by-name/${name}`);
+  }
+
+  getFlashcardSetUpdateName(flashcardsetRequest: FlashcardSetUpdateName): Observable<FlashcardSet> {
+    return this.http.put<FlashcardSet>(`${this.baseUrl}/update-name`, flashcardsetRequest);
+  }
+
+  getFlashcardSetAnswers(flashcardsetRequest: FlashcardSetAnswers): Observable<FlashcardSet> {
+    return this.http.post<FlashcardSet>(`${this.baseUrl}/set-answers`, flashcardsetRequest);
   }
 }

@@ -6,6 +6,15 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        builder => builder
+        .WithOrigins("http://localhost:5101")
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+});
+
 // Add services to the container.
 
 //builder.Services.AddControllers().AddJsonOptions(options =>
