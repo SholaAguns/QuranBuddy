@@ -24,11 +24,11 @@ export class FlashcardSetService {
     return this.http.get<FlashcardSet>(`${this.baseUrl}/by-name/${name}`);
   }
 
-  getFlashcardSetUpdateName(flashcardsetRequest: FlashcardSetUpdateName): Observable<FlashcardSet> {
+  updateFlashcardSetName(flashcardsetRequest: FlashcardSetUpdateName): Observable<FlashcardSet> {
     return this.http.put<FlashcardSet>(`${this.baseUrl}/update-name`, flashcardsetRequest);
   }
 
-  getFlashcardSetAnswers(flashcardsetRequest: FlashcardSetAnswers): Observable<FlashcardSet> {
+  setFlashcardSetAnwsers(flashcardsetRequest: FlashcardSetAnswers): Observable<FlashcardSet> {
     return this.http.post<FlashcardSet>(`${this.baseUrl}/set-answers`, flashcardsetRequest);
   }
 }

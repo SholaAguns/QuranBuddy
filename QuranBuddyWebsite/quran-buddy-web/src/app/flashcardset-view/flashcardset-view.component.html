@@ -1,1 +1,20 @@
-<p>flashcardset-view works!</p>
+<div class="flashcardset-container" *ngIf="flashcardSet">
+    <h2>{{ flashcardSet.name }}</h2>
+    <p><strong>Type:</strong> {{ flashcardSet.type }}</p>
+    <p><strong>Number of Cards:</strong> {{ flashcardSet.flashcardAmount }}</p>
+  
+    <form [formGroup]="flashcardsForm" (ngSubmit)="setAnswers()">
+        <div formArrayName="flashcards" class="flashcards">
+          <div class="flashcard" *ngFor="let flashcard of flashcards.controls; let i = index" [formGroupName]="i">
+            <p><strong>Question:</strong> {{ flashcard.get('question')?.value }}</p>
+            <div>
+              <label for="answer-{{i}}"><strong>Answer:</strong></label>
+              <input id="answer-{{i}}" type="text" formControlName="answer">
+            </div>
+          </div>
+        </div>
+    
+        <button type="submit" [disabled]="flashcardsForm.invalid">Set Answers</button>
+      </form>
+</div>
+  

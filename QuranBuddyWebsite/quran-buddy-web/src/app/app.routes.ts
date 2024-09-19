@@ -16,7 +16,11 @@ export const routes: Routes = [
         loadComponent: () => import('./create-flashcardset/create-flashcardset.component').then(c => c.CreateFlashcardsetComponent)           
     },
     {
-        path: 'flashcardset-view',
+        path: 'flashcardset-view/:id',
         loadComponent: () => import('./flashcardset-view/flashcardset-view.component').then(c => c.FlashcardsetViewComponent)           
+    },
+    {
+        path: 'flashcardsets',
+        loadComponent: () => import('./flashcardset-list/flashcardset-list.component').then(c => c.FlashcardsetListComponent)           
     },
 ];

@@ -1,8 +1,8 @@
 export interface Flashcard {
-    id: number;
-    name: string;
-    translatedName: string;
-    versesCount: number;
-    revelationPlace: string;
+    id: string;
+    flashcardSetId: string;
+    question: string;
+    answer: string;
+    imageUrl: string;
   }
   

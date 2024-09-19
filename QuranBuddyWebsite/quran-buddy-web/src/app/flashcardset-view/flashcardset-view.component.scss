@@ -1,0 +1,32 @@
+.flashcardset-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  
+    h2 {
+      margin-top: 0;
+    }
+  
+    .flashcards {
+      margin-top: 20px;
+    }
+  
+    .flashcard {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+      margin-bottom: 10px;
+  
+      p {
+        margin: 0;
+      }
+  
+      strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  
