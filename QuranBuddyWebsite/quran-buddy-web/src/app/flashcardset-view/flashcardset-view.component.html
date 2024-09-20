@@ -2,19 +2,37 @@
     <h2>{{ flashcardSet.name }}</h2>
     <p><strong>Type:</strong> {{ flashcardSet.type }}</p>
     <p><strong>Number of Cards:</strong> {{ flashcardSet.flashcardAmount }}</p>
-  
-    <form [formGroup]="flashcardsForm" (ngSubmit)="setAnswers()">
-        <div formArrayName="flashcards" class="flashcards">
-          <div class="flashcard" *ngFor="let flashcard of flashcards.controls; let i = index" [formGroupName]="i">
-            <p><strong>Question:</strong> {{ flashcard.get('question')?.value }}</p>
-            <div>
-              <label for="answer-{{i}}"><strong>Answer:</strong></label>
-              <input id="answer-{{i}}" type="text" formControlName="answer">
-            </div>
-          </div>
-        </div>
     
-        <button type="submit" [disabled]="flashcardsForm.invalid">Set Answers</button>
+    <div *ngIf="flashcardSet?.report && flashcardSet.report.length > 0; else flashcardForm">
+        <div *ngFor="let flashcard of flashcardSet.flashcards; let i = index">
+          <p><strong>Question:</strong> {{ flashcard.question }}</p>
+          
+
+          <span *ngIf="flashcardSet.report[i]" class="correct-answer">
+            Answer: {{ flashcard.answer }} <span class="green-tick">✔️</span>
+          </span>
+    
+          <span *ngIf="!flashcardSet.report[i]" class="incorrect-answer">
+            Your Answer: {{ flashcardSet.userAnswers[i] }} <span class="red-cross">❌</span> <br>
+            Correct Answer: {{ flashcard.answer }}
+          </span>
+        </div>
+      </div>
+  
+    <ng-template #flashcardForm>
+        <form [formGroup]="flashcardsForm" (ngSubmit)="setAnswers()" *ngIf="flashcardsForm">
+            <div formArrayName="flashcards" class="flashcards">
+                <div class="flashcard" *ngFor="let flashcard of flashcards.controls; let i = index" [formGroupName]="i">
+                    <p><strong>Question:</strong> {{ flashcard.get('question')?.value }}</p>
+                    <div>
+                    <label for="answer-{{i}}"><strong>Answer:</strong></label>
+                    <input id="answer-{{i}}" type="text" formControlName="answer">
+                    </div>
+                </div>
+            </div>
+        
+            <button type="submit" [disabled]="flashcardsForm.invalid">Set Answers</button>
       </form>
+    </ng-template>
 </div>
   

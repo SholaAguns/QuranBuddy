@@ -27,9 +27,10 @@ export class FlashcardsetViewComponent {
     const flashcardSetId = this.route.snapshot.paramMap.get('id');
     if (flashcardSetId) {
       this.flashcardSetService.getFlashcardSetById(flashcardSetId).subscribe((flashcardSet) => {
-        this.flashcardSet = flashcardSet; 
+        this.flashcardSet = flashcardSet;
+        this.initializeForm();
       });
-    this.initializeForm();
+    
   }
 }
 
