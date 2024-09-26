@@ -1,11 +1,13 @@
+import { UUID } from "node:crypto";
+
 export interface FlashcardSetAnswers {
-    id: string;
+    id: UUID;
     userAnswers: string[];
 
 }
 
 export interface FlashcardSetUpdateName {
-    id: string;
+    id: UUID;
     name: string;
 
 }

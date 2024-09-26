@@ -98,11 +98,34 @@ export class CreateFlashcardsetComponent {
   createFlashcardSet() {
     if (this.flashcardSetRequestForm.valid) {
       const requestModel = this.flashcardSetRequestForm.value;
+      let requestObservable;
 
-      this.flashcardService.getFlashcardSet(requestModel).subscribe(
+      switch (this.selectedRequestType) {
+        case 'default':
+          requestObservable = this.flashcardService.getFlashcardSet(requestModel);
+          break;
+        
+        case 'byRange':
+          requestObservable = this.flashcardService.getFlashcardSetByRange(requestModel);
+          break;
+  
+        case 'byIds':
+          requestObservable = this.flashcardService.getFlashcardSetByIds(requestModel);
+          break;
+  
+        case 'byNames':
+          requestObservable = this.flashcardService.getFlashcardSetByNames(requestModel);
+          break;
+  
+        default:
+          console.error('Invalid request type');
+          return;
+      }
+
+      requestObservable.subscribe(
         (response: FlashcardSet) => {
           this.newFlashcardSet = response;
-          console.log('Flashcard  created', response);
+          console.log('Flashcard set created', response);
           this.router.navigate(['/flashcardset-view'], { state: { flashcardSet: this.newFlashcardSet } });
         },
         (error) => {

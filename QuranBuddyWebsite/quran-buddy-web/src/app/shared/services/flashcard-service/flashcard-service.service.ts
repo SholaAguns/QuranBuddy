@@ -17,14 +17,14 @@ export class FlashcardService {
   }
 
   getFlashcardSetByRange(flashcardRequest: FlashcardRequestByRange): Observable<FlashcardSet> {
-    return this.http.post<FlashcardSet>(`${this.baseUrl}`, flashcardRequest);
+    return this.http.post<FlashcardSet>(`${this.baseUrl}/by-range`, flashcardRequest);
   }
 
   getFlashcardSetByIds(flashcardRequest: FlashcardRequestByIds): Observable<FlashcardSet> {
-    return this.http.post<FlashcardSet>(`${this.baseUrl}`, flashcardRequest);
+    return this.http.post<FlashcardSet>(`${this.baseUrl}/by-ids`, flashcardRequest);
   }
 
   getFlashcardSetByNames(flashcardRequest: FlashcardRequestByNames): Observable<FlashcardSet> {
-    return this.http.post<FlashcardSet>(`${this.baseUrl}`, flashcardRequest);
+    return this.http.post<FlashcardSet>(`${this.baseUrl}/by-names`, flashcardRequest);
   }
 }

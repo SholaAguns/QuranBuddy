@@ -55,7 +55,7 @@ namespace QuranBuddyAPI.Models
 
     public class FlashcardSetUpdateNameRequest
     {
-        [StringLength(60, ErrorMessage = "Id length limit is 36 characters")]
+        //[StringLength(60, ErrorMessage = "Id length limit is 36 characters")]
         public Guid Id { get; set; }
 
         [StringLength(60, ErrorMessage = "Name length limit is 60 characters")]
@@ -64,7 +64,7 @@ namespace QuranBuddyAPI.Models
 
     public class FlashcardSetAnswersRequest
     {
-        [StringLength(60, ErrorMessage = "Id length limit is 36 characters")]
+        //[StringLength(60, ErrorMessage = "Id length limit is 36 characters")]
         public Guid Id { get; set; }
 
         [AllowedNamesLengthEndAttribute(30, ErrorMessage = "Name length limit is 30 characters")]

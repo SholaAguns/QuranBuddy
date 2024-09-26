@@ -57,9 +57,10 @@ export class FlashcardsetViewComponent {
       this.flashcardSetService.setFlashcardSetAnwsers(flashcardsetRequest).subscribe(
         (response: FlashcardSet) => {
           console.log('Answers updated successfully', response);
+          window.location.reload();
         },
         (error) => {
-          console.error('Error updating answers', error);
+          console.error('Error updating answers' + flashcardsetRequest.userAnswers, error);
         }
       );
     }
