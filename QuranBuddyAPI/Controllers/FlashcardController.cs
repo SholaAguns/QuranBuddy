@@ -42,7 +42,7 @@ namespace QuranBuddyAPI.Controllers
 
            
 
-            var flashcardSet = flashcardService.GetFlashcardSetByRangeAsync(flashcardRequest.Amount, flashcardRequest.RangeStart, flashcardRequest.RangeEnd);
+            var flashcardSet = await flashcardService.GetFlashcardSetByRangeAsync(flashcardRequest.Amount, flashcardRequest.RangeStart, flashcardRequest.RangeEnd);
 
             var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
 
@@ -54,7 +54,7 @@ namespace QuranBuddyAPI.Controllers
         {
             var flashcardService = _serviceFactory.GetFlashcardService(flashcardRequest.Type);
 
-            var flashcardSet = flashcardService.GetFlashcardSetByIdsAsync(flashcardRequest.Amount, flashcardRequest.IdList);
+            var flashcardSet = await flashcardService.GetFlashcardSetByIdsAsync(flashcardRequest.Amount, flashcardRequest.IdList);
 
             var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
 
@@ -66,7 +66,7 @@ namespace QuranBuddyAPI.Controllers
         {
             var flashcardService = _serviceFactory.GetFlashcardService(flashcardRequest.Type);
 
-            var flashcardSet = flashcardService.GetFlashcardSetByNamesAsync(flashcardRequest.Amount, flashcardRequest.NameList);
+            var flashcardSet = await flashcardService.GetFlashcardSetByNamesAsync(flashcardRequest.Amount, flashcardRequest.NameList);
 
             var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
 
