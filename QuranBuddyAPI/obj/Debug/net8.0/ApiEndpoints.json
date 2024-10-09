@@ -149,6 +149,22 @@
   },
   {
     "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
+    "Method": "DeleteFlashcardSet",
+    "RelativePath": "api/FlashcardSet/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
     "Method": "GetFlashcardSetById",
     "RelativePath": "api/FlashcardSet/by-id/{id}",
     "HttpMethod": "GET",
@@ -174,6 +190,22 @@
       {
         "Name": "name",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuranBuddyAPI.Controllers.FlashcardSetController",
+    "Method": "DeleteFlashcardSetRange",
+    "RelativePath": "api/FlashcardSet/delete-range",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "flashcardRequest",
+        "Type": "QuranBuddyAPI.Models.FlashcardSetDeleteRangeRequest",
         "IsRequired": true
       }
     ],

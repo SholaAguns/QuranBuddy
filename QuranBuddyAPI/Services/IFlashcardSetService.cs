@@ -15,5 +15,8 @@ namespace QuranBuddyAPI.Services
         public Task UpdateFlashcardSetNameAsync(FlashcardSetUpdateNameRequest flashcardRequest);
 
         public Task SetFlashcardSetAnwsersAsync(FlashcardSetAnswersRequest flashcardRequest);
+
+        public Task DeleteFlashcardSetAsync(Guid id);
+        public Task DeleteFlashcardSetRangeAsync(Guid[] ids);
     }
 }

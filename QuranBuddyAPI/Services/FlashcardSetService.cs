@@ -66,5 +66,32 @@ namespace QuranBuddyAPI.Services
             await _context.SaveChangesAsync();
 
         }
+
+        public async Task DeleteFlashcardSetAsync(Guid id)
+        {
+            var flashcardset = await _context.FlashcardSets.SingleOrDefaultAsync(f => f.Id == id);
+
+            if (flashcardset == null) throw new ObjectNotFoundException();
+
+            _context.FlashcardSets.Remove(flashcardset);
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteFlashcardSetRangeAsync(Guid[] ids)
+        {
+            List<FlashcardSet> flashcardSets = new List<FlashcardSet>();
+
+            foreach(var id in ids)
+            {
+                flashcardSets.Add(await _context.FlashcardSets.SingleOrDefaultAsync(f => f.Id == id));
+            }
+
+            _context.FlashcardSets.RemoveRange(flashcardSets);
+
+            await _context.SaveChangesAsync();
+        }
+
+
     }
 }

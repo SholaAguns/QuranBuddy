@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FlashcardSet } from '../../models/flashcardset';
-import { FlashcardSetAnswers, FlashcardSetUpdateName } from '../../requests/flashcardset-requests';
+import { FlashcardSetAnswers, FlashcardSetDeleteRange, FlashcardSetUpdateName } from '../../requests/flashcardset-requests';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,13 @@ export class FlashcardSetService {
 
   setFlashcardSetAnwsers(flashcardsetRequest: FlashcardSetAnswers): Observable<FlashcardSet> {
     return this.http.post<FlashcardSet>(`${this.baseUrl}/set-answers`, flashcardsetRequest);
+  }
+
+  deleteFlashcardSet(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  deleteFlashcardSetRange(flashcardsetRequest: FlashcardSetDeleteRange): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/delete-range`, flashcardsetRequest);
   }
 }

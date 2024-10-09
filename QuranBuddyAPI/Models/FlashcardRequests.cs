@@ -70,4 +70,11 @@ namespace QuranBuddyAPI.Models
         [AllowedNamesLengthEndAttribute(30, ErrorMessage = "Name length limit is 30 characters")]
         public List<string> UserAnswers { get; set; }
     }
+
+    public class FlashcardSetDeleteRangeRequest
+    {
+        public Guid[] Ids { get; set; }
+
+
+    }
 }

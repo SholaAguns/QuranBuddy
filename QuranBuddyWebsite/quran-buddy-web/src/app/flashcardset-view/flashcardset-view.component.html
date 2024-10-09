@@ -1,5 +1,16 @@
 <div class="flashcardset-container" *ngIf="flashcardSet">
-    <h2>{{ flashcardSet.name }}</h2>
+    
+    <div class="flashcardset-header">
+      <h2 *ngIf="!isEditingName" (click)="isEditingName = true">{{ flashcardSet.name }}</h2>
+  
+      <form *ngIf="isEditingName" [formGroup]="updateNameForm" (ngSubmit)="updateName()">
+        <input type="text" formControlName="name" [value]="flashcardSet.name" />
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="isEditingName = false">Cancel</button>
+      </form>
+  
+      <button class="btn btn-danger" (click)="deleteFlashcardSet()">Delete</button>
+    </div>
     <p><strong>Type:</strong> {{ flashcardSet.type }}</p>
     <p><strong>Number of Cards:</strong> {{ flashcardSet.flashcardAmount }}</p>
     

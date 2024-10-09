@@ -11,3 +11,8 @@ export interface FlashcardSetUpdateName {
     name: string;
 
 }
+
+export interface FlashcardSetDeleteRange {
+    ids: UUID[];
+
+}

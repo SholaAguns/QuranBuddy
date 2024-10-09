@@ -1,18 +1,32 @@
 <div *ngIf="flashcardSets" class="container">
-    <h2>All Chapters <i (click)="fetchFlashcardsets()" role="button" class="bi bi-arrow-clockwise refresh-icon"></i></h2>
+    <h2>
+      All Chapters 
+      <i (click)="fetchFlashcardsets()" role="button" class="bi bi-arrow-clockwise refresh-icon"></i>
+    </h2>
   
+    <button class="btn btn-danger" (click)="bulkDelete()" [disabled]="selectedFlashcardSetIds.length === 0">
+      Delete Selected
+    </button>
+
     <table class="table table-success table-striped">
         <thead>
             <tr>
+              <th scope="col">Select</th>
               <th scope="col">Name</th>
             </tr>
           </thead>
         <tbody>
-            <tr *ngFor="let flashcardSet of flashcardSets">
-                <td>
-                  <a [routerLink]="['/flashcardset-view', flashcardSet.id]">{{ flashcardSet.name }}</a>
-                </td>
-              </tr>
+          <tr *ngFor="let flashcardSet of flashcardSets">
+            <td>
+              <input 
+                type="checkbox" 
+                (change)="toggleSelection(flashcardSet.id, $event)" 
+              />
+            </td>
+            <td>
+              <a [routerLink]="['/flashcardset-view', flashcardSet.id]">{{ flashcardSet.name }}</a>
+            </td>
+          </tr>
         </tbody>
     </table>
   </div>  

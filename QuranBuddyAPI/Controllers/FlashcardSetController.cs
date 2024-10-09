@@ -86,6 +86,29 @@ namespace QuranBuddyAPI.Controllers
             return Ok(flashcardSetDto);
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteFlashcardSet(Guid id)
+        {
+            var flashcardSet = await _flashbackSetService.GetFlashcardSetByIdAsync(id);
+
+
+            if (flashcardSet == null) return NotFound();
+
+            await _flashbackSetService.DeleteFlashcardSetAsync(id);
+
+            return NoContent();
+        }
+
+
+        [HttpPost("delete-range")]
+        public async Task<IActionResult> DeleteFlashcardSetRange(FlashcardSetDeleteRangeRequest flashcardRequest)
+        {
+
+            await _flashbackSetService.DeleteFlashcardSetRangeAsync(flashcardRequest.Ids);
+
+            return NoContent();
+        }
+
 
 
 

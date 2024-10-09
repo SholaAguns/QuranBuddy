@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { FlashcardSet } from '../shared/models/flashcardset';
 import { CommonModule } from '@angular/common';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FlashcardSetService } from '../shared/services/flashcardset-service/flashcardset-service.service';
-import { FlashcardSetAnswers } from '../shared/requests/flashcardset-requests';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { FlashcardSetAnswers, FlashcardSetUpdateName } from '../shared/requests/flashcardset-requests';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-flashcardset-view',
@@ -16,11 +16,14 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 export class FlashcardsetViewComponent {
   flashcardSet!: FlashcardSet;
   flashcardsForm!: FormGroup;
+  updateNameForm!: FormGroup;
+  isEditingName = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private flashcardSetService: FlashcardSetService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +43,10 @@ export class FlashcardsetViewComponent {
         question: [card.question],
         answer: [''] 
       })))
+    });
+
+    this.updateNameForm = this.formBuilder.group({
+      name: ['', Validators.required],
     });
   }
 
@@ -66,4 +73,37 @@ export class FlashcardsetViewComponent {
     }
   }
 
+  updateName() {
+    if (this.updateNameForm.valid) {
+      const newName = this.updateNameForm.value.name;
+      const flashcardsetRequest: FlashcardSetUpdateName = {
+        id: this.flashcardSet.id,
+        name: newName
+      };
+      this.flashcardSetService.updateFlashcardSetName(flashcardsetRequest).subscribe(
+        (response: FlashcardSet) => {
+          console.log('Name updated successfully', response);
+          this.flashcardSet.name = newName;
+          this.isEditingName = false;
+        },
+        (error) => {
+          console.error('Error updating answers' + newName, error);
+        }
+      );
+    }
+  }
+
+
+    deleteFlashcardSet() {
+      this.flashcardSetService.deleteFlashcardSet(this.flashcardSet.id).subscribe(
+        () => {
+          console.log('Flashcardset deleted');
+          this.router.navigate(['/flashcardsets']);
+        },
+        error => {
+          console.error('Error deleting flashcardset', error);
+        }
+      );
+    }
+ 
 }
