@@ -11,7 +11,7 @@
 
         public string Answer { get; set; }
 
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
     }
 
     public class FlashcardSet

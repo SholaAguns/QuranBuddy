@@ -12,5 +12,7 @@ namespace QuranBuddyAPI.FlashcardServices
         Task<FlashcardSet> GetFlashcardSetByIdsAsync(int amount, List<int> idList);
 
         Task<FlashcardSet> GetFlashcardSetByNamesAsync(int amount, List<string> nameList);
+
+        Task<FlashcardSet> GetFlashcardSetByJuzAsync(int amount, List<int> idList);
     }
 }

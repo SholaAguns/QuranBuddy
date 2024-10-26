@@ -15,6 +15,11 @@ namespace QuranBuddyAPI.FlashcardServices
             throw new NotImplementedException();
         }
 
+        public Task<FlashcardSet> GetFlashcardSetByJuzAsync(int amount, List<int> idList)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<FlashcardSet> GetFlashcardSetByNamesAsync(int amount, List<string> nameList)
         {
             throw new NotImplementedException();

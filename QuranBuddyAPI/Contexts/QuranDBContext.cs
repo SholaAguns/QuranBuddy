@@ -11,6 +11,8 @@ namespace QuranBuddyAPI.Contexts
         public DbSet<Chapter> Chapters { get; set; }
         public DbSet<Verse> Verses { get; set; }
 
+        public DbSet<Phrase> Phrases { get; set; }
+
         public DbSet<Flashcard> Flashcards { get; set; }
         public DbSet<FlashcardSet> FlashcardSets { get; set; }
 
@@ -28,6 +30,9 @@ namespace QuranBuddyAPI.Contexts
 
             modelBuilder.Entity<Verse>()
              .OwnsMany(v => v.Translations);
+
+            modelBuilder.Entity<Phrase>()
+                .HasKey(p => p.Id);
 
 
             modelBuilder.Entity<Chapter>()

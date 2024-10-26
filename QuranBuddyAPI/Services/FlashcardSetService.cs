@@ -84,7 +84,10 @@ namespace QuranBuddyAPI.Services
 
             foreach(var id in ids)
             {
-                flashcardSets.Add(await _context.FlashcardSets.SingleOrDefaultAsync(f => f.Id == id));
+                var flashcardset = await _context.FlashcardSets.SingleOrDefaultAsync(f => f.Id == id);
+
+                if (flashcardset != null) flashcardSets.Add(flashcardset);
+
             }
 
             _context.FlashcardSets.RemoveRange(flashcardSets);

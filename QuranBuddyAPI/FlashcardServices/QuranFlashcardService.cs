@@ -192,5 +192,31 @@ namespace QuranBuddyAPI.FlashcardServices
 
 
         }
+
+        public async Task<FlashcardSet> GetFlashcardSetByJuzAsync(int amount, List<int> idList)
+        {
+            FlashcardSet flashcardSet = new FlashcardSet();
+            flashcardSet.Id = Guid.NewGuid();
+            flashcardSet.Type = _type;
+            flashcardSet.Name = _type + "_flashcards" + string.Format("{0:yyyy-MM-dd_HH-mm-ss}", DateTime.Now);
+            flashcardSet.FlashcardAmount = amount;
+
+            List<Verse> Verses = new List<Verse>();
+
+            foreach (var id in idList)
+            {
+                var chapterVerses = _context.Verses.Where(v => v.JuzNumber == id).ToList();
+
+                Verses.AddRange(chapterVerses);
+
+            }
+
+            flashcardSet = PopulateFlashcardSet(Verses, flashcardSet);
+
+            _context.FlashcardSets.Add(flashcardSet);
+            await _context.SaveChangesAsync();
+
+            return flashcardSet;
+        }
     }
 }

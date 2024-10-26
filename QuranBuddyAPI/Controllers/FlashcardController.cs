@@ -72,5 +72,17 @@ namespace QuranBuddyAPI.Controllers
 
             return Ok(flashcardSetDto);
         }
+
+        [HttpPost("by-juz")]
+        public async Task<IActionResult> GetFlashcardByJuz(FlashcardRequestByIds flashcardRequest)
+        {
+            var flashcardService = _serviceFactory.GetFlashcardService(flashcardRequest.Type);
+
+            var flashcardSet = await flashcardService.GetFlashcardSetByJuzAsync(flashcardRequest.Amount, flashcardRequest.IdList);
+
+            var flashcardSetDto = _mapper.Map<FlashcardSetDto>(flashcardSet);
+
+            return Ok(flashcardSetDto);
+        }
     }
 }

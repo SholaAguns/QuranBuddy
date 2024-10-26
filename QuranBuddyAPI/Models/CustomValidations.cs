@@ -8,12 +8,12 @@ namespace QuranBuddyAPI.Models
 
     public class AllowedValuesAttribute : ValidationAttribute
     {
-        private readonly string[] _allowedValues;
+        private readonly string[] _allowedValues = ["Quran", "Arabic", "Phrase"];
 
-        public AllowedValuesAttribute(params string[] allowedValues)
-        {
-            _allowedValues = allowedValues;
-        }
+        //public AllowedValuesAttribute(params string[] allowedValues)
+        //{
+        //    _allowedValues = allowedValues;
+        //}
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {

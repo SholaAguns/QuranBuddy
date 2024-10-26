@@ -37,9 +37,13 @@ builder.Services.AddScoped<ChapterService>();
 builder.Services.AddScoped<IVerseService, VerseService>();
 builder.Services.AddScoped<VerseService>();
 
+builder.Services.AddScoped<IPhraseService, PhraseService>();
+builder.Services.AddScoped<PhraseService>();
+
 builder.Services.AddScoped<IServiceFactory, ServiceFactory>();
 builder.Services.AddScoped<DefaultFlashcardService>(); 
 builder.Services.AddScoped<QuranFlashcardService>();
+builder.Services.AddScoped<PhraseFlashcardService>();
 
 builder.Services.AddScoped<IFlashcardSetService, FlashcardSetService>();
 

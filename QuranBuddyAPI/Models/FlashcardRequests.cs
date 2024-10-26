@@ -7,7 +7,7 @@ namespace QuranBuddyAPI.Models
         [Range(2, 50, ErrorMessage = "Amount must be between 5 and 50.")]
         public int Amount { get; set; }
 
-        [AllowedValues("Quran", "Arabic", ErrorMessage = "Type must be one of the following values: Quran, Arabic.")]
+        [AllowedValues()]
         public string Type { get; set; }
 
     }
@@ -17,7 +17,7 @@ namespace QuranBuddyAPI.Models
         [Range(2, 50, ErrorMessage = "Amount must be between 5 and 50.")]
         public int Amount { get; set; }
 
-        [AllowedValues("Quran", "Arabic", ErrorMessage = "Type must be one of the following values: Quran, Arabic.")]
+        [AllowedValues()]
         public string Type { get; set; }
 
         [Range(1, 114, ErrorMessage = "Amount must be between 5 and 50.")]
@@ -33,7 +33,7 @@ namespace QuranBuddyAPI.Models
         [Range(2, 50, ErrorMessage = "Amount must be between 5 and 50.")]
         public int Amount { get; set; }
 
-        [AllowedValues("Quran", "Arabic", ErrorMessage = "Type must be one of the following values: Quran, Arabic.")]
+        [AllowedValues()]
         public string Type { get; set; }
 
         [AllowedIdsEndAttribute(1, 114, ErrorMessage = "Each ID must be between 1 and 114.")]
@@ -45,7 +45,7 @@ namespace QuranBuddyAPI.Models
         [Range(2, 50, ErrorMessage = "Amount must be between 5 and 50.")]
         public int Amount { get; set; }
 
-        [AllowedValues("Quran", "Arabic", ErrorMessage = "Type must be one of the following values: Quran, Arabic.")]
+        [AllowedValues()]
         public string Type { get; set; }
 
         [AllowedNamesLengthEndAttribute(20, ErrorMessage = "Name length limit is 20 characters")]
